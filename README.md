@@ -1,13 +1,39 @@
-# Reconexão I — Protótipo
+# Reconexão I — Protótipo navegável
 
-Site demonstrativo responsivo do Reconexão I, contendo página de apresentação, contratação simulada, portal do aluno e dashboard administrativo.
+Protótipo estático da plataforma Reconexão, publicado pelo GitHub Pages, com identidade visual em azul-marinho e preto.
 
-## Publicação no GitHub Pages
+## Como navegar
 
-Em **Settings → Pages**, selecione **Deploy from a branch**, a branch **main** e a pasta **/(root)**, depois clique em **Save**.
+A tela inicial permite escolher **Área do aluno** ou **Painel administrativo**. Não há página comercial ou checkout nesta versão do protótipo.
 
-Após ativação, o endereço será https://arthurcarvalho0001.github.io/Reconexao/
+### Área do aluno
+- Resumo de estudos e próximo encontro
+- Módulos com videoaulas publicadas
+- Reuniões semanais e gravações simuladas
+- Inscrição e cancelamento em encontros de capacidade limitada
+- Materiais de apoio, avisos e dados demonstrativos do acesso
 
-## Limites
+### Painel administrativo
+- Indicadores de alunos ativos, inatividade por 30 dias ou mais, acessos expirados sem renovação e novas inscrições
+- Gráficos de pizza/rosca sobre a distribuição de acessos e a última reunião
+- Gestão de conteúdos com biblioteca de módulos, listagem de aulas, edição, rascunhos e publicação
+- Reuniões e cadastro manual de gravações
+- Encontros, inscritos e capacidade máxima
+- Presenças, ausências e participantes ainda não registrados (edições refletem no dashboard)
+- Comunicados e histórico de e-mails simulados
 
-Projeto visual e navegável, sem backend, banco, login verdadeiro, pagamento, envio de e-mail ou vídeos reais. Todos os dados são fictícios.
+## Atenção: demonstração
+
+Todos os dados são fictícios. As ações interativas atualizam apenas a memória do navegador durante a visita: **não persistem após recarregar**. Não há autenticação, banco de dados, Google Meet real, hospedagem de vídeo, pagamentos ou envio real de e-mail.
+
+## Estrutura
+
+- `index.html` — página principal
+- `styles.css` — identidade visual, responsividade e animações
+- `app.js` — telas e dados demonstrativos
+
+## GitHub Pages
+
+Em **Settings → Pages**, escolha **Deploy from a branch**, **main**, **/(root)**. O endereço esperado é:
+
+https://arthurcarvalho0001.github.io/Reconexao/
