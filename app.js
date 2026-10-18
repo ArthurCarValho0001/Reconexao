@@ -61,20 +61,20 @@ function title(text,sub,button=""){return '<div class="page-head"><div><div clas
 function section(text,button=""){return '<div class="section-title"><h2>'+text+'</h2>'+button+'</div>'}
 function pie(titleText,sub,items,centerLabel,centerSub,colors){const total=items.reduce((n,x)=>n+x.value,0);let running=0;const grad=items.map((x,i)=>{const start=running/total*100;running+=x.value;return colors[i]+' '+start+'% '+running/total*100+'%'}).join(",");const legend=items.map((x,i)=>'<div class="legend-item"><span class="legend-label"><i class="legend-dot" style="background:'+colors[i]+'"></i>'+esc(x.label)+'</span><strong>'+fmt(x.value)+'</strong></div>').join("");return '<div class="panel"><div class="panel-head"><div><h2>'+titleText+'</h2><p>'+sub+'</p></div></div><div class="chart-row"><div role="img" aria-label="'+esc(items.map(x=>x.label+": "+x.value).join(", "))+'" class="pie" style="background:conic-gradient('+grad+')"><div class="pie-center"><strong>'+esc(centerLabel)+'</strong><span>'+esc(centerSub)+'</span></div></div><div class="legend">'+legend+'</div></div></div>'}
 function metric(label,value,foot,iconName){return '<div class="panel metric"><div class="metric-label">'+label+'</div><div class="marker">'+icon(iconName)+'</div><div class="metric-number">'+fmt(value)+'</div><div class="metric-note">'+foot+'</div></div>'}
-const adminMenu=[["home","Visão geral","grid"],["content","Conteúdos","book"],["meetings","Reuniões","calendar"],["groups","Encontros","users"],["attendance","Presenças","check"],["notices","Comunicados","bell"],["emails","E-mails","mail"]];
-const studentMenu=[["home","Visão geral","home"],["classes","Meus módulos","book"],["meetings","Reuniões","calendar"],["groups","Encontros","users"],["materials","Materiais","file"],["notices","Avisos","bell"],["account","Meu acesso","settings"]];
-function brand(light=false){return '<div class="brand '+(light?'brand-light':'')+'"><span class="monogram">R</span><span class="brandname">Reconexão</span></div>'}
-function home(){return '<div class="welcome"><div class="welcome-top">'+brand(true)+'<span class="eyebrow">PROTÓTIPO DE NAVEGAÇÃO</span></div><div class="welcome-main"><div class="welcome-content"><div class="welcome-emblem">R</div><div class="eyebrow" style="color:#9dbce9">PLATAFORMA RECONEXÃO</div><h1>Reconexão</h1><p class="lead">Uma plataforma para acompanhar jornadas, organizar conteúdos e conectar pessoas. Escolha um ambiente para explorar a demonstração.</p><div class="welcome-choices"><button class="choice" data-action="goto" data-role="student" data-page="home"><span class="choice-icon">'+icon("book",true)+'</span><strong>Área do aluno</strong><span>Acesse aulas, reuniões, materiais e encontros da comunidade.</span><span class="choice-link">Entrar no ambiente '+icon("arrow")+'</span></button><button class="choice" data-action="goto" data-role="admin" data-page="home"><span class="choice-icon">'+icon("grid",true)+'</span><strong>Painel administrativo</strong><span>Consulte indicadores e simule a gestão da plataforma.</span><span class="choice-link">Abrir painel '+icon("arrow")+'</span></button></div></div></div><div class="welcome-foot">Ambiente demonstrativo • Sem autenticação ou dados reais</div></div>'}
-function layout(inner){const menu=state.role==="admin"?adminMenu:studentMenu;const breadcrumb=(menu.find(m=>m[0]===state.page)||["","Detalhes"])[1];return '<div class="shell"><aside class="sidebar">'+brand(true)+'<div class="nav-label">'+(state.role==="admin"?"Administração":"Aprendizagem")+'</div><nav class="nav-items" aria-label="Navegação principal">'+menu.map(([page,label,ico])=>'<button class="nav-item '+(state.page===page?"active":"")+'" data-action="goto" data-role="'+state.role+'" data-page="'+page+'">'+icon(ico)+label+'</button>').join("")+'</nav><div class="sidebar-bottom"><div class="eyebrow" style="color:#8198be">RECONEXÃO I</div><p>Ambiente demonstrativo</p><button data-action="goto" data-role="home" data-page="home">'+icon("back")+' Voltar para a entrada</button></div></aside><section class="workspace"><header class="topbar"><span class="breadcrumb">Reconexão / '+esc(breadcrumb)+'</span><div class="topbar-right"><span class="demo-chip">DADOS FICTÍCIOS</span><span class="avatar">'+(state.role==="admin"?"AD":"AM")+'</span></div></header><main class="content" id="main-content">'+inner+'</main></section></div>'}
+const adminMenu=[["home","Visão geral","grid"],["content","Conteúdos","book"],["meetings","Reuniões","calendar"],["groups","Encontros","users"],["attendance","Presenças","check"],["notices","Comunicados","bell"],["emails","E-mails","mail"],["journey","Jornada demonstrativa","chart"]];
+const studentMenu=[["home","Visão geral","home"],["classes","Meus módulos","book"],["meetings","Reuniões","calendar"],["groups","Encontros","users"],["materials","Materiais","file"],["notices","Avisos","bell"],["journey","Pontos e progressão","chart"],["questionnaires","Questionários","file"],["day","Reconexão Day","check"],["account","Meu acesso","settings"]];
+function brand(light=false){return '<div class="brand '+(light?'brand-light':'')+'"><img class="brand-logo" src="assets/reconexao-symbol.svg" alt="" width="44" height="46"><span class="brandname">Reconexão</span></div>'}
+function home(){return '<div class="welcome"><div class="welcome-top">'+brand(true)+'<span class="eyebrow">PROTÓTIPO DE NAVEGAÇÃO</span></div><div class="welcome-main"><div class="welcome-content"><div class="welcome-emblem"><img class="welcome-logo" src="assets/reconexao-symbol.svg" alt="Símbolo Reconexão: acolhimento e crescimento" width="142" height="146"></div><div class="eyebrow" style="color:#b8d9cd">PLATAFORMA RECONEXÃO</div><h1>Reconexão</h1><p class="lead">Uma plataforma para acompanhar jornadas, organizar conteúdos e conectar pessoas. Escolha um ambiente para explorar a demonstração.</p><div class="welcome-choices"><button class="choice" data-action="goto" data-role="student" data-page="home"><span class="choice-icon">'+icon("book",true)+'</span><strong>Área do aluno</strong><span>Acesse aulas, reuniões, materiais e encontros da comunidade.</span><span class="choice-link">Entrar no ambiente '+icon("arrow")+'</span></button><button class="choice" data-action="goto" data-role="admin" data-page="home"><span class="choice-icon">'+icon("grid",true)+'</span><strong>Painel administrativo</strong><span>Consulte indicadores e simule a gestão da plataforma.</span><span class="choice-link">Abrir painel '+icon("arrow")+'</span></button></div></div></div><div class="welcome-foot">Ambiente demonstrativo • Sem autenticação ou dados reais</div></div>'}
+function layout(inner){const menu=state.role==="admin"?adminMenu:studentMenu;const breadcrumb=(menu.find(m=>m[0]===state.page)||["","Detalhes"])[1];return '<div class="shell"><aside class="sidebar">'+brand(true)+'<div class="nav-label">'+(state.role==="admin"?"Administração":"Aprendizagem")+'</div><nav class="nav-items" aria-label="Navegação principal">'+menu.map(([page,label,ico])=>'<button class="nav-item '+(state.page===page?"active":"")+'" data-action="goto" data-role="'+state.role+'" data-page="'+page+'">'+icon(ico)+label+'</button>').join("")+'</nav><div class="sidebar-bottom"><div class="eyebrow" style="color:#91b5a7">RECONEXÃO I</div><p>Ambiente demonstrativo</p><button data-action="goto" data-role="home" data-page="home">'+icon("back")+' Voltar para a entrada</button></div></aside><section class="workspace"><header class="topbar"><span class="breadcrumb">Reconexão / '+esc(breadcrumb)+'</span><div class="topbar-right"><span class="demo-chip">DADOS FICTÍCIOS</span><span class="avatar">'+(state.role==="admin"?"AD":"AM")+'</span></div></header><main class="content" id="main-content">'+demoBanner()+inner+'</main></section></div>'}
 function adminDashboard(){
 const att=statsAttendance();return title("Visão geral","Panorama de participantes, engajamento e operação da comunidade.",btn("Gerenciar conteúdos","goto",'data-page="content" data-role="admin"',"btn"))+
 '<div class="grid grid-4">'+metric("Alunos ativos",184,"Contas com acesso vigente","users")+metric("Usuários inativos por 30 dias ou mais",28,"Dentro do grupo de alunos ativos","clock")+metric("Acesso expirado sem renovação",36,"Contas que não renovaram","calendar")+metric("Novas inscrições",17,"Nos últimos 30 dias","chart")+'</div>'+
-section("Engajamento e acesso")+'<div class="grid">'+pie("Situação dos acessos","Distribuição dos 232 cadastros ilustrativos",[{label:"Ativos",value:184},{label:"Expirados sem renovação",value:36},{label:"Aguardando ativação",value:12}],232,"cadastros",["#285cbd","#b1bfd5","#e1aa60"])+
-pie("Presenças e ausências na última reunião","15/10/2026 • Construindo rotinas conscientes",att,72,"inscritos",["#285cbd","#db8290","#d8e0ed"])+'</div>'+
+section("Engajamento e acesso")+'<div class="grid">'+pie("Situação dos acessos","Distribuição dos 232 cadastros ilustrativos",[{label:"Ativos",value:184},{label:"Expirados sem renovação",value:36},{label:"Aguardando ativação",value:12}],232,"cadastros",["#287b78","#adc8bc","#e1aa60"])+
+pie("Presenças e ausências na última reunião","15/10/2026 • Construindo rotinas conscientes",att,72,"inscritos",["#287b78","#db8290","#d9e6df"])+'</div>'+
 '<div class="grid"><div class="panel"><div class="panel-head"><div><h2>Presenças e ausências na última reunião</h2><p>Resultado demonstrativo, vinculado ao registro manual.</p></div>'+btn("Ver lista","goto",'data-role="admin" data-page="attendance"')+'</div><div class="stat-row"><div class="stat-cell"><strong>'+att[0].value+'</strong><span>Presentes</span></div><div class="stat-cell"><strong>'+att[1].value+'</strong><span>Ausentes</span></div><div class="stat-cell"><strong>'+att[2].value+'</strong><span>Não registrados</span></div></div></div>'+
-'<div class="panel"><div class="panel-head"><div><h2>Gestão de conteúdos</h2><p>Indicadores reais da biblioteca simulada abaixo.</p></div>'+btn("Abrir biblioteca","goto",'data-role="admin" data-page="content"')+'</div><div class="stat-row"><div class="stat-cell"><strong>'+data.modules.length+'</strong><span>Módulos</span></div><div class="stat-cell"><strong>'+publishedLessons()+'</strong><span>Aulas publicadas</span></div><div class="stat-cell"><strong>'+data.modules.filter(m=>m.status==="Rascunho").length+'</strong><span>Módulos em rascunho</span></div></div><p class="caption" style="margin:16px 0 0">Última atualização demonstrativa: Módulo Novos caminhos em revisão.</p></div></div>'+
+'<div class="panel"><div class="panel-head"><div><h2>Gestão de conteúdos</h2><p>Indicadores calculados da biblioteca fictícia.</p></div>'+btn("Abrir biblioteca","goto",'data-role="admin" data-page="content"')+'</div><div class="stat-row"><div class="stat-cell"><strong>'+data.modules.length+'</strong><span>Módulos</span></div><div class="stat-cell"><strong>'+publishedLessons()+'</strong><span>Aulas publicadas</span></div><div class="stat-cell"><strong>'+data.modules.filter(m=>m.status==="Rascunho").length+'</strong><span>Módulos em rascunho</span></div></div><p class="caption" style="margin:16px 0 0">Última atualização demonstrativa: Módulo Novos caminhos em revisão.</p></div></div>'+
 section("Operação da semana")+'<div class="grid">'+
-'<div class="panel"><div class="panel-head"><div><h2>Próximas atividades</h2><p>Reuniões e encontros cadastrados.</p></div></div><div class="list"><div class="list-item"><div><strong>Encontro semanal</strong><p>22 out, 19h • Google Meet</p></div>'+badge("Agendada")+'</div><div class="list-item"><div><strong>Roda de conversa: autoconhecimento</strong><p>24 out, 10h • '+(data.groups[0].members.length+Number(data.groups[0].joined))+'/'+data.groups[0].capacity+' inscrições</p></div>'+btn("Ver vagas","goto",'data-role="admin" data-page="groups"')+'</div><div class="list-item"><div><strong>Práticas de escuta</strong><p>28 out, 19h • '+data.groups[1].members.length+'/'+data.groups[1].capacity+' inscrições</p></div>'+btn("Ver vagas","goto",'data-role="admin" data-page="groups"')+'</div></div></div>'+
+'<div class="panel"><div class="panel-head"><div><h2>Próximas atividades</h2><p>Reuniões e encontros cadastrados.</p></div></div><div class="list">'+scheduledMeetings().slice(0,1).map(m=>'<div class="list-item"><div><strong>'+esc(m.title)+'</strong><p>'+esc(m.date)+' • '+esc(m.time)+' • On-line</p></div>'+badge(m.status)+'</div>').join("")+'<div class="list-item"><div><strong>Roda de conversa: autoconhecimento</strong><p>24 out, 10h • '+(data.groups[0].members.length+Number(data.groups[0].joined))+'/'+data.groups[0].capacity+' inscrições</p></div>'+btn("Ver vagas","goto",'data-role="admin" data-page="groups"')+'</div><div class="list-item"><div><strong>Práticas de escuta</strong><p>28 out, 19h • '+data.groups[1].members.length+'/'+data.groups[1].capacity+' inscrições</p></div>'+btn("Ver vagas","goto",'data-role="admin" data-page="groups"')+'</div></div></div>'+
 '<div class="panel"><div class="panel-head"><div><h2>Atividades recentes</h2><p>Exemplos de movimentação da equipe.</p></div></div><div class="list">'+[['16 out','Comunicado de agenda publicado'],['15 out','Reunião semanal finalizada'],['14 out','E-mail de lembrete preparado'],['13 out','Material do módulo 2 atualizado']].map(x=>'<div class="list-item"><div><strong>'+x[1]+'</strong><p>'+x[0]+' 2026</p></div>'+icon("check")+'</div>').join("")+'</div></div></div>';
 }
 function adminContent(){
@@ -82,7 +82,7 @@ const mod=data.modules.filter(m=>state.filter==="Todos"||m.status===state.filter
 return title("Gestão de conteúdos","Biblioteca de módulos e aulas, com publicação e edição simuladas.",btn(icon("plus")+" Novo módulo","form",'data-type="module"',"btn"))+
 '<div class="grid grid-3">'+metric("Módulos cadastrados",data.modules.length,"Publicados e em elaboração","book")+metric("Videoaulas cadastradas",countLessons(),"Total registrado no acervo","play")+metric("Videoaulas publicadas",publishedLessons(),"Visíveis ao aluno","check")+'</div>'+
 section("Biblioteca de módulos",btn(icon("plus")+" Adicionar aula","form",'data-type="lesson"',"btn-quiet"))+
-'<div class="panel tight"><div style="padding:17px 18px 0"><div class="tabs">'+["Todos","Publicado","Rascunho"].map(t=>btn(t,"filter",'data-filter="'+t+'"',state.filter===t?"btn-dark":"btn-light")).join("")+'</div></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Módulo</th><th>Conteúdo</th><th>Situação</th><th>Ações</th></tr></thead><tbody>'+rows+'</tbody></table></div></div><p class="hint" style="margin-top:14px">Use “Ver aulas” para consultar, editar e publicar cada videoaula. Os dados são mantidos somente durante esta visita.</p>';
+'<div class="panel tight"><div style="padding:17px 18px 0"><div class="tabs">'+["Todos","Publicado","Rascunho"].map(t=>btn(t,"filter",'data-filter="'+t+'"',state.filter===t?"btn-dark":"btn-light")).join("")+'</div></div><div class="table-wrap"><table class="data-table"><thead><tr><th>Módulo</th><th>Conteúdo</th><th>Situação</th><th>Ações</th></tr></thead><tbody>'+rows+'</tbody></table></div></div><p class="hint" style="margin-top:14px">Referência inicial: oito aulas por módulo, com quantidade alterável pelo administrador. Este acervo usa exemplos reduzidos. Use “Ver aulas” para consultar, editar e publicar; os dados duram somente esta visita.</p>';
 }
 function adminModuleDetail(){const m=data.modules.find(x=>x.id===state.adminModule);if(!m)return adminContent();return '<div class="page-head"><div><button class="btn-link" data-action="goto" data-role="admin" data-page="content">'+icon("back")+' Voltar para biblioteca</button><h1>'+esc(m.title)+'</h1><p>'+esc(m.description)+'</p></div>'+btn("Editar módulo","form",'data-type="module" data-id="'+m.id+'"',"btn-light")+'</div>'+
 '<div class="panel"><div class="split-info"><div><strong>Situação do módulo</strong><p class="small">O aluno só visualiza módulos e aulas publicados.</p></div><div class="inline">'+badge(m.status)+' '+btn(m.status==="Publicado"?"Retirar da publicação":"Publicar módulo","toggle-module",'data-id="'+m.id+'"',"btn-quiet")+'</div></div></div>'+
@@ -109,10 +109,10 @@ function adminEmails(){return title("Comunicação por e-mail","Simulação de c
 section("Histórico de envios simulados")+'<div class="panel tight"><div class="table-wrap"><table class="data-table"><thead><tr><th>Assunto</th><th>Público</th><th>Destinatários</th><th>Data</th><th>Situação</th></tr></thead><tbody>'+data.emails.map(e=>'<tr><td><strong>'+esc(e.subject)+'</strong></td><td>'+esc(e.audience)+'</td><td>'+e.recipients+'</td><td>'+esc(e.date)+'</td><td>'+badge(e.status)+'</td></tr>').join("")+'</tbody></table></div></div>';
 }
 function studentHome(){
+const continuation=continuingLesson();
 const published=data.modules.filter(m=>m.status==="Publicado"),lessons=published.flatMap(m=>m.lessons.filter(l=>l.status==="Publicado"));
 return title("Olá, Major","Continue de onde parou. Seus conteúdos e atividades estão organizados aqui.")+
-'<div class="grid"><div class="panel"><span class="eyebrow">CONTINUAR APRENDENDO</span><h2 style="margin:14px 0 6px">Reconhecendo padrões</h2><p>Aula 1 de 4 • Autoconhecimento na prática</p><div class="progress" style="margin:20px 0"><span style="width:35%"></span></div><div class="split-info"><span class="small muted">35% do módulo concluído (simulado)</span>'+btn("Continuar aula","watch",'data-id="201"',"btn")+'</div></div>'+
-'<div class="panel"><span class="eyebrow">PRÓXIMA REUNIÃO</span><h2 style="margin:14px 0 6px">Prática e diálogo</h2><p>Quinta-feira, 22/10 • 19h • Google Meet</p><div class="split-info" style="margin-top:35px"><span class="tag">Agendada</span>'+btn("Ver detalhes","goto",'data-role="student" data-page="meetings"',"btn")+'</div></div></div>'+
+'<div class="grid"><div class="panel"><span class="eyebrow">CONTINUAR APRENDENDO</span>'+(continuation?'<h2 style="margin:14px 0 6px">'+esc(continuation.l.title)+'</h2><p>'+esc(continuation.m.title)+'</p><div class="progress" style="margin:20px 0"><span style="width:'+moduleProgress(continuation.m.id)+'%"></span></div><div class="split-info"><span class="small muted">'+moduleProgress(continuation.m.id)+'% do módulo concluído (simulado)</span>'+btn("Continuar aula","watch",'data-id="'+continuation.l.id+'"',"btn")+'</div>':'<p>Nenhuma aula publicada disponível.</p>')+'</div>'+upcomingHomeCard()+'</div>'+
 section("Seus módulos",btn("Ver todos","goto",'data-role="student" data-page="classes"'))+
 '<div class="grid grid-3">'+published.map((m,i)=>'<article class="panel"><div class="course-cover"><em>MÓDULO '+String(i+1).padStart(2,"0")+'</em></div><h3>'+esc(m.title)+'</h3><p class="small">'+m.lessons.filter(l=>l.status==="Publicado").length+' aulas disponíveis</p>'+btn("Abrir módulo","student-module",'data-id="'+m.id+'"',"btn-quiet")+'</article>').join("")+'</div>'+
 section("Comunicados recentes",btn("Todos os avisos","goto",'data-role="student" data-page="notices"'))+
@@ -127,28 +127,32 @@ return '<div class="page-head"><div><button class="btn-link" data-action="goto" 
 '<div class="panel"><div class="list">'+m.lessons.filter(l=>l.status==="Publicado").map((l,i)=>'<div class="list-item"><div class="inline"><span class="tag">'+String(i+1).padStart(2,"0")+'</span><div><strong>'+esc(l.title)+'</strong><p>'+esc(l.duration)+' • Videoaula</p></div></div>'+btn("Assistir","watch",'data-id="'+l.id+'"',"btn")+'</div>').join("")+'</div></div>';
 }
 function findLesson(id){for(const m of data.modules){const l=m.lessons.find(l=>l.id===id);if(l)return {m,l}}return null}
-function studentVideo(){const f=findLesson(state.lesson);if(!f)return studentClasses();
+function studentVideo(){const f=availableLesson(state.lesson);if(!f)return title("Aula indisponível","A aula ou seu módulo não está publicado. Seu histórico e seus pontos foram preservados.")+studentClasses();
 return '<div class="page-head"><div><button class="btn-link" data-action="student-module" data-id="'+f.m.id+'">'+icon("back")+' Voltar às aulas</button><h1>'+esc(f.l.title)+'</h1><p>'+esc(f.m.title)+' • '+esc(f.l.duration)+'</p></div></div>'+
-'<div class="panel"><div class="video-screen"><button class="play-button" data-action="fake-video" aria-label="Simular reprodução">'+icon("play",true)+'</button></div><h2 style="margin:21px 0 8px">Sobre esta aula</h2><p>Conteúdo de demonstração. No produto final, o vídeo será reproduzido dentro da plataforma por meio de um player incorporado de serviço externo.</p><div class="inline">'+btn("Concluir aula (simulação)","toast",'data-message="Aula marcada como concluída nesta demonstração."',"btn")+' '+btn("Material de apoio","toast",'data-message="Material disponível apenas como exemplo."')+'</div></div>';
+'<div class="panel"><div class="video-screen"><button class="play-button" data-action="fake-video" aria-label="Simular reprodução">'+icon("play",true)+'</button></div><h2 style="margin:21px 0 8px">Sobre esta aula</h2><p>Conteúdo de demonstração. No produto final, o vídeo será reproduzido dentro da plataforma por meio de um player incorporado de serviço externo.</p><div class="inline">'+btn("Simular 90% assistidos","demo-lesson",'data-id="'+f.l.id+'"',"btn")+' '+btn("Material de apoio","toast",'data-message="Material disponível apenas como exemplo."')+'</div></div>';
 }
-function studentMeetings(){return title("Reuniões","Participe dos encontros ao vivo e reveja as gravações.")+section("Próxima reunião")+
-'<div class="panel"><div class="meeting-card"><div class="date-tile"><strong>22</strong><span>OUT</span></div><div style="flex:1"><h3>Encontro semanal: prática e diálogo</h3><p>Quinta-feira • 19h • Google Meet</p><div class="inline">'+badge("Agendada")+' '+btn("Abrir Google Meet","toast",'data-message="Link do Google Meet fictício. Nenhuma reunião real será aberta."',"btn")+'</div></div></div></div>'+
-section("Gravações anteriores")+'<div class="grid">'+data.meetings.filter(m=>m.recording).map(m=>'<div class="panel"><span class="eyebrow">REUNIÃO GRAVADA</span><h3 style="margin-top:13px">'+esc(m.title)+'</h3><p>'+esc(m.date)+' • A gravação foi disponibilizada pela equipe.</p>'+btn("Assistir gravação","toast",'data-message="Player de gravação ilustrativo."',"btn-quiet")+'</div>').join("")+'</div>';
+function studentMeetings(){return title("Reuniões","Agenda e gravações fictícias cadastradas pela administração.")+mediationPanel()+section("Aulas ao vivo")+
+'<div class="stack">'+(scheduledMeetings().map(m=>'<div class="panel"><h2>'+esc(m.title)+'</h2><p>'+esc(m.date)+' • '+esc(m.time)+' • On-line</p>'+badge(m.status)+' '+btn("Acessar aula (simulação)","demo-live",'data-id="'+m.id+'"',"btn")+'</div>').join("")||'<div class="panel"><p>Nenhuma reunião agendada.</p></div>')+'</div>'+section("Gravações anteriores")+'<div class="grid">'+data.meetings.filter(m=>m.recording).map(m=>'<div class="panel"><span class="eyebrow">REUNIÃO GRAVADA</span><h3 style="margin-top:13px">'+esc(m.title)+'</h3><p>'+esc(m.date)+' • '+esc(m.time)+'</p>'+btn("Simular 90% da gravação","demo-recording",'data-id="'+m.id+'"',"btn-quiet")+'</div>').join("")+'</div>';
 }
-function studentGroups(){return title("Encontros em pequenos grupos","Inscrições por encontro, respeitando o limite de participantes.")+
-'<div class="grid grid-3">'+data.groups.map(g=>'<div class="panel"><div class="panel-head"><div><h3>'+esc(g.title)+'</h3><p>'+esc(g.date)+' • '+esc(g.time)+'</p></div></div><div class="split-info"><span class="small muted">Participantes</span><strong>'+(g.members.length+(g.joined?1:0))+' / '+g.capacity+'</strong></div><div class="progress" style="margin:13px 0 20px"><span style="width:'+Math.min(100,(g.members.length+(g.joined?1:0))/g.capacity*100)+'%"></span></div>'+(g.joined?btn("Cancelar inscrição","enroll",'data-id="'+g.id+'"',"btn-light",""):(g.members.length>=g.capacity?'<span class="tag red">Vagas esgotadas</span>':btn("Reservar minha vaga","enroll",'data-id="'+g.id+'"',"btn","")))+'</div>').join("")+'</div>';
+function availableLesson(id){const f=findLesson(id);return f&&f.m.status==="Publicado"&&f.l.status==="Publicado"?f:null}
+function continuingLesson(){return availableLesson(state.lesson)||availableLesson(201)||data.modules.filter(m=>m.status==="Publicado").flatMap(m=>m.lessons.map(l=>({m,l}))).find(f=>f.l.status==="Publicado")||null}
+function scheduledMeetings(){const key=m=>m.date.split("/").reverse().join("")+m.time;return data.meetings.filter(m=>m.status==="Agendada").slice().sort((a,b)=>key(a).localeCompare(key(b)))}
+function upcomingHomeCard(){const m=scheduledMeetings()[0];return '<div class="panel"><span class="eyebrow">PRÓXIMA REUNIÃO</span>'+(m?'<h2 style="margin:14px 0 6px">'+esc(m.title)+'</h2><p>'+esc(m.date)+' • '+esc(m.time)+' • On-line</p>'+badge(m.status)+' '+btn("Ver detalhes","goto",'data-role="student" data-page="meetings"',"btn"):'<p>Nenhuma reunião agendada.</p>')+'</div>'}
+function meetingNotice(before,after){const keys=["title","date","time","link","status"];if(!keys.some(k=>before[k]!==after[k]))return;data.notices.unshift({id:"meeting-"+after.id+"-"+Date.now()+"-"+data.notices.length,title:"Reunião atualizada: "+after.title,message:"Alteração simulada. Antes: "+before.title+" — "+before.date+" às "+before.time+". Agora: "+after.title+" — "+after.date+" às "+after.time+". Situação: "+after.status+". Confira os dados na agenda. Nenhum e-mail enviado.",date:"Dia "+demo.day+" da demonstração"})}
+function studentGroups(){return title("Encontros em pequenos grupos","Reconexão II • Encontros exclusivamente on-line. Reservas demonstrativas; cancelamento ainda depende de regra aprovada.")+
+'<div class="grid grid-3">'+data.groups.map(g=>'<div class="panel"><div class="panel-head"><div><h3>'+esc(g.title)+'</h3><p>'+esc(g.date)+' • '+esc(g.time)+'</p></div></div><div class="split-info"><span class="small muted">Participantes</span><strong>'+(g.members.length+(g.joined?1:0))+' / '+g.capacity+'</strong></div><div class="progress" style="margin:13px 0 20px"><span style="width:'+Math.min(100,(g.members.length+(g.joined?1:0))/g.capacity*100)+'%"></span></div>'+(g.joined?btn("Cancelamento: regra pendente","toast",'data-message="Cancelamento e realocação aguardam definição. Nenhuma reserva real foi criada."',"btn-light",""):(g.members.length>=g.capacity?'<span class="tag red">Vagas esgotadas</span>':btn("Reservar minha vaga","enroll",'data-id="'+g.id+'"',"btn","")))+'</div>').join("")+'</div>';
 }
 function studentMaterials(){const materials=[["Roteiro de reflexão pessoal","PDF • Módulo 2"],["Exercício de observação","PDF • Módulo 1"],["Guia de conversas com propósito","PDF • Módulo 3"]];return title("Materiais de apoio","Arquivos e roteiros relacionados às videoaulas.")+
 '<div class="panel"><div class="list">'+materials.map(a=>'<div class="list-item"><div class="inline">'+icon("file",true)+'<div><strong>'+a[0]+'</strong><p>'+a[1]+'</p></div></div>'+btn("Visualizar","toast",'data-message="Arquivo fictício para demonstração."')+'</div>').join("")+'</div></div>'}
 function studentNotices(){return title("Avisos","Comunicados publicados pela administração.")+'<div class="stack">'+data.notices.map(n=>'<article class="panel"><div class="split-info"><h3>'+esc(n.title)+'</h3><span class="small muted">'+esc(n.date)+'</span></div><p style="margin:10px 0 0">'+esc(n.message)+'</p></article>').join("")+'</div>'}
 function studentAccount(){return title("Meu acesso","Informações ilustrativas da participação.")+
-'<div class="grid"><div class="panel"><h2>Reconexão I</h2><div class="list"><div class="list-item"><span class="muted">Situação</span>'+badge("Publicado").replace("Publicado","Acesso ativo")+'</div><div class="list-item"><span class="muted">Tipo de contratação</span><strong>Pagamento único</strong></div><div class="list-item"><span class="muted">Período de acesso</span><strong>6 meses</strong></div><div class="list-item"><span class="muted">Renovação</span><strong>Nova compra ao final do período</strong></div></div></div><div class="panel"><h2>Perfil de demonstração</h2><p><strong>Major</strong><br>major@reconexao.test</p><p class="small">Na versão real, somente alunos com pagamento confirmado poderão ativar a conta. Uma única sessão ativa será permitida por usuário.</p>'+btn("Simular solicitação de renovação","toast",'data-message="Renovação dependerá do checkout real."',"btn")+'</div></div>';
+'<div class="grid"><div class="panel"><h2>Reconexão I</h2><div class="list"><div class="list-item"><span class="muted">Situação</span>'+badge("Publicado").replace("Publicado","Acesso ativo")+'</div><div class="list-item"><span class="muted">Tipo de contratação</span><strong>Condições comerciais pendentes</strong></div><div class="list-item"><span class="muted">Período inicial de acesso</span><strong>6 meses</strong></div><div class="list-item"><span class="muted">Renovação</span><strong>Mecânica e preço a confirmar</strong></div></div></div><div class="panel"><h2>Perfil de demonstração</h2><p><strong>Major</strong><br>major@reconexao.test</p><p class="small">Na versão real, somente alunos com pagamento confirmado poderão ativar a conta. Uma única sessão ativa será permitida por usuário.</p>'+btn("Simular solicitação de renovação","toast",'data-message="Renovação dependerá do checkout real."',"btn")+'</div></div>';
 }
 function field(name,label,value="",type="text",extra=""){return '<div class="field"><label for="f-'+esc(name)+'">'+esc(label)+'</label>'+(type==="textarea"?'<textarea id="f-'+esc(name)+'" name="'+esc(name)+'" '+extra+'>'+esc(value)+'</textarea>':'<input id="f-'+esc(name)+'" name="'+esc(name)+'" type="'+esc(type)+'" value="'+esc(value)+'" '+extra+' required>')+'</div>'}
 function selectField(name,label,options,value){return '<div class="field"><label for="f-'+esc(name)+'">'+esc(label)+'</label><select id="f-'+esc(name)+'" name="'+esc(name)+'">'+options.map(o=>'<option value="'+esc(o.value??o)+'" '+((o.value??o)==value?"selected":"")+'>'+esc(o.label??o)+'</option>').join("")+'</select></div>'}
 function openForm(type,id=null,moduleId=null){
 let title="",fields="",entity=null;if(type==="module"){entity=data.modules.find(m=>m.id===id);title=entity?"Editar módulo":"Novo módulo";fields=field("title","Nome do módulo",entity?.title)+field("description","Descrição",entity?.description,"textarea")+selectField("status","Situação",["Publicado","Rascunho"],entity?.status||"Rascunho")}
-if(type==="lesson"){const f=id?findLesson(id):null;entity=f?.l;title=entity?"Editar videoaula":"Adicionar videoaula";fields=selectField("module","Módulo",data.modules.map(m=>({value:String(m.id),label:m.title})),f?.m.id??moduleId??data.modules[0].id)+field("title","Título da aula",entity?.title)+field("duration","Duração estimada",entity?.duration||"20 min")+field("video","URL do vídeo (demonstrativa)","https://videos.exemplo/aula")+selectField("status","Situação",["Publicado","Rascunho"],entity?.status||"Rascunho")}
+if(type==="lesson"){const f=id?findLesson(id):null;entity=f?.l;title=entity?"Editar videoaula":"Adicionar videoaula";fields=selectField("module","Módulo",data.modules.map(m=>({value:String(m.id),label:m.title})),f?.m.id??moduleId??data.modules[0].id)+field("title","Título da aula",entity?.title)+field("duration","Duração estimada",entity?.duration||"20 min")+field("video","URL do vídeo (demonstrativa)",entity?.video??"https://videos.exemplo/aula","url")+selectField("status","Situação",["Publicado","Rascunho"],entity?.status||"Rascunho")+selectField("required","Obrigatória na progressão (exemplo)",[{value:"yes",label:"Sim"},{value:"no",label:"Não"}],entity?.required===false?"no":"yes")}
 if(type==="meeting"){entity=data.meetings.find(m=>m.id===id);title=entity?"Editar reunião":"Nova reunião";fields=field("title","Título",entity?.title)+field("date","Data (dd/mm/aaaa)",entity?.date)+field("time","Horário",entity?.time||"19:00")+field("link","Link Google Meet (simulado)",entity?.link||"https://meet.google.com/exemplo")+selectField("status","Situação",["Agendada","Realizada"],entity?.status||"Agendada")}
 if(type==="recording"){entity=data.meetings.find(m=>m.id===id);title="Cadastrar gravação";fields='<p class="small muted">Reunião: '+esc(entity?.title)+'</p>'+field("recording","Link da gravação",entity?.recording||"https://videos.exemplo/gravação")}
 if(type==="group"){entity=data.groups.find(g=>g.id===id);title=entity?"Editar encontro":"Novo encontro";fields=field("title","Nome do encontro",entity?.title)+field("date","Data (dd/mm/aaaa)",entity?.date)+field("time","Horário",entity?.time||"19:00")+field("capacity","Quantidade máxima de participantes",entity?.capacity||8,"number",'min="1" max="100"')}
@@ -161,8 +165,8 @@ function closeModal(){state.modal=null;document.querySelector(".modal-backdrop")
 function saveForm(form){
 const {type,id}=state.modal,fd=new FormData(form),v=k=>String(fd.get(k)||"").trim(),newId=()=>Date.now()+Math.floor(Math.random()*999);
 if(type==="module"){let x=data.modules.find(m=>m.id===id);if(x){x.title=v("title");x.description=v("description");x.status=v("status")}else data.modules.push({id:newId(),title:v("title"),description:v("description"),status:v("status"),lessons:[]});}
-if(type==="lesson"){const original=id?findLesson(id):null;if(original){original.m.lessons=original.m.lessons.filter(l=>l.id!==id)}const target=data.modules.find(m=>m.id===Number(v("module")));if(!target){toast("Selecione um módulo válido.");return}target.lessons.push({id:id||newId(),title:v("title"),duration:v("duration"),status:v("status")});state.adminModule=target.id;}
-if(type==="meeting"){let x=data.meetings.find(m=>m.id===id);if(!x){x={id:newId(),recording:""};data.meetings.unshift(x)}Object.assign(x,{title:v("title"),date:v("date"),time:v("time"),link:v("link"),status:v("status")})}
+if(type==="lesson"){const target=data.modules.find(m=>m.id===Number(v("module")));if(!target){toast("Selecione um módulo válido.");return}let video;try{video=new URL(v("video"));if(!["https:","http:"].includes(video.protocol))throw new Error()}catch{toast("Informe uma URL de vídeo HTTP ou HTTPS válida (apenas demonstrativa).");return}const original=id?findLesson(id):null;if(original)original.m.lessons=original.m.lessons.filter(l=>l.id!==id);target.lessons.push({id:id||newId(),title:v("title"),duration:v("duration"),video:v("video"),status:v("status"),required:v("required")==="yes"});state.adminModule=target.id;}
+if(type==="meeting"){let x=data.meetings.find(m=>m.id===id);const before=x?{...x}:null;if(!x){x={id:newId(),recording:""};data.meetings.unshift(x)}Object.assign(x,{title:v("title"),date:v("date"),time:v("time"),link:v("link"),status:v("status")});if(before)meetingNotice(before,x)}
 if(type==="recording"){const x=data.meetings.find(m=>m.id===id);if(x)x.recording=v("recording")}
 if(type==="group"){let x=data.groups.find(g=>g.id===id);const cap=Number(v("capacity"));if(x&&cap<x.members.length+Number(x.joined)){toast("A capacidade não pode ser menor que o número de inscritos.");return}if(!x){x={id:newId(),members:[],joined:false};data.groups.push(x)}Object.assign(x,{title:v("title"),date:v("date"),time:v("time"),capacity:cap})}
 if(type==="notice"){let x=data.notices.find(n=>n.id===id);if(!x){x={id:newId(),date:"17/10/2026"};data.notices.unshift(x)}Object.assign(x,{title:v("title"),message:v("message")})}
@@ -171,13 +175,337 @@ closeModal();render();toast(type==="email"?"Mensagem adicionada ao histórico de
 }
 function memberModal(id){const g=data.groups.find(g=>g.id===id);if(!g)return;renderModal("Inscritos — "+esc(g.title),'<p>'+(g.members.length+Number(g.joined))+' de '+g.capacity+' vagas ocupadas (dados fictícios).</p><div class="list">'+g.members.concat(g.joined?["Major"]:[]).map(n=>'<div class="list-item"><strong>'+esc(n)+'</strong>'+badge("Inscrito")+'</div>').join("")+'</div>')}
 function toast(message){document.querySelector(".toast")?.remove();const div=document.createElement("div");div.className="toast";div.setAttribute("role","status");div.textContent=message;document.body.appendChild(div);clearTimeout(state.toastTimer);state.toastTimer=setTimeout(()=>div.remove(),4300)}
-function render(){if(state.role==="home"){app.innerHTML=home();return}let body="";if(state.role==="admin"){const map={home:adminDashboard,content:adminContent,module:adminModuleDetail,meetings:adminMeetings,groups:adminGroups,attendance:adminAttendance,notices:adminNotices,emails:adminEmails};body=(map[state.page]||adminDashboard)()}else{const map={home:studentHome,classes:studentClasses,module:studentModule,video:studentVideo,meetings:studentMeetings,groups:studentGroups,materials:studentMaterials,notices:studentNotices,account:studentAccount};body=(map[state.page]||studentHome)()}app.innerHTML=layout(body)}
+const demo={day:0,ledger:[],completed:new Set(),initialDay:null,followup:false,mediation:false,paymentII:false,dayEntries:{}};
+function demoBanner(){return '<div class="alert demo-banner"><strong>Simulação local — sem autenticação, pagamentos ou respostas reais.</strong> Os dados são fictícios e desaparecem ao recarregar. Não informe dados pessoais.</div>'}
+function award(key,label){if(demo.ledger.some(e=>e.key===key))return false;demo.ledger.push({key,label,points:10,day:demo.day});return true}
+function pointTotal(){return demo.ledger.reduce((total,e)=>total+e.points,0)}
+function requiredLessons(){return data.modules.filter(m=>m.status==="Publicado").flatMap(m=>m.lessons.filter(l=>l.status==="Publicado"&&l.required===true))}
+function moduleProgress(id){const m=data.modules.find(m=>m.id===id);const ls=m?m.lessons.filter(l=>l.status==="Publicado"):[];return ls.length?Math.round(ls.filter(l=>demo.completed.has(l.id)).length/ls.length*100):0}
+function progression(){const required=requiredLessons();const criteria=[
+  {label:"Pelo menos 200 pontos",ok:pointTotal()>=200},
+  {label:"Todas as aulas obrigatórias atualmente publicadas",ok:required.every(l=>demo.completed.has(l.id))},
+  {label:"Mediação de Conflito",ok:demo.mediation},
+  {label:"Questionário inicial",ok:demo.initialDay!==null},
+  {label:"Questionário de 30 dias",ok:demo.followup}
+];const eligible=criteria.every(c=>c.ok);return {criteria,eligible,unlocked:eligible&&demo.paymentII}}
+function demoAction(action,id){
+  if(state.role!=="student"){toast("Explore as ações pela Área do aluno. O administrador não concede pontos.");return}
+  let changed=false;
+  if(action==="demo-lesson"){const f=findLesson(id);if(!f||f.m.status!=="Publicado"||f.l.status!=="Publicado")return;demo.completed.add(id);changed=award("lesson:"+id,"90% simulados da aula: "+f.l.title)}
+  if(action==="demo-live"){const m=data.meetings.find(m=>m.id===id);if(!m||m.status!=="Agendada")return;changed=award("live:"+id,"Clique simulado na live: "+m.title)}
+  if(action==="demo-recording"){const m=data.meetings.find(m=>m.id===id);if(!m?.recording)return;changed=award("recording:"+id,"90% simulados da gravação: "+m.title)}
+  if(action==="demo-whatsapp")changed=award("whatsapp","Clique simulado no WhatsApp; ingresso não comprovado");
+  if(action==="demo-initial"&&demo.initialDay===null){demo.initialDay=demo.day;changed=award("initial","Submissão fictícia completa do questionário inicial")}
+  if(action==="demo-followup"&&demo.initialDay!==null&&demo.day-demo.initialDay>=30&&!demo.followup){demo.followup=true;changed=award("followup","Submissão fictícia completa do questionário de 30 dias")}
+  if(action==="demo-day"){toast("Abra Reconexão Day e conclua as 12 respostas válidas.");return}
+  if(action==="demo-next-day"){demo.day++;toast("Relógio da demonstração avançado em um dia.");return}
+  if(action==="demo-advance-30"){demo.day+=30;toast("Relógio da demonstração avançado em 30 dias.");return}
+  if(action==="demo-mediation"){demo.mediation=true;toast("Início fictício da gravação de Mediação registrado. Não concede pontos de vídeo.");return}
+  if(action==="demo-payment"){if(!progression().eligible){toast("Pré-requisitos ainda pendentes.");return}demo.paymentII=true;toast("Pagamento do II fictício confirmado. Liberação simulada automática.");return}
+  toast(changed?"Evento fictício registrado: +10 pontos nesta visita.":"Nenhum ponto adicional. Evento já registrado ou condição não atendida.");
+}
+function mediationPanel(){return '<div class="panel"><h2>Mediação de Conflito</h2><p>Cenário fictício: live indisponível e gravação dentro da janela de acesso. Iniciar a gravação cumpre a participação; pontos por 90% são separados.</p>'+btn("Simular início da gravação","demo-mediation")+'</div>'}
+function journeyPage(){const p=progression();return title("Pontos e progressão","Regras aprovadas aplicadas somente a eventos fictícios desta visita.")+
+'<div class="grid grid-3">'+metric("Pontos simulados",pointTotal(),"10 por evento elegível, uma única vez","chart")+metric("Aulas concluídas",demo.completed.size,"Conclusões fictícias de 90% assistidos","book")+metric("Dia da demonstração",demo.day,"Relógio relativo; não é a data real","clock")+'</div>'+section("Reconexão II")+
+'<div class="panel"><p><strong>'+ (p.unlocked?"Reconexão II liberado (simulação)":p.eligible?"Pré-requisitos cumpridos; novo pagamento pendente":"Progressão pendente")+'</strong></p><ul class="criteria">'+p.criteria.concat([{label:"Novo pagamento do Reconexão II confirmado",ok:demo.paymentII}]).map(c=>'<li><span>'+esc(c.label)+'</span>'+badge(c.ok?"Cumprido":"Pendente")+'</li>').join("")+'</ul><p class="small">3FM não é obrigatório para progressão. Expiração do I não elimina elegibilidade já conquistada. Compra, vigência e expiração reais não são implementadas.</p>'+(state.role==="student"?btn("Simular confirmação do pagamento II","demo-payment",p.eligible&&!demo.paymentII?"":"disabled","btn"):"<p>Administrador consulta a demonstração; não atribui pontos.</p>")+'</div>'+section("Progresso por módulo")+'<div class="grid">'+data.modules.filter(m=>m.status==="Publicado").map(m=>'<div class="panel"><h3>'+esc(m.title)+'</h3><p>'+moduleProgress(m.id)+'% concluído • simulação</p><div class="progress"><span style="width:'+moduleProgress(m.id)+'%"></span></div></div>').join("")+'</div>'+section("Histórico de pontos fictícios")+'<div class="panel"><p class="small">A despublicação preserva pontos. Os exemplos de aulas existentes foram marcados obrigatórios apenas no conjunto demonstrativo; isso não define o currículo real.</p>'+(demo.ledger.length?'<div class="list">'+demo.ledger.map(e=>'<div class="list-item"><div><strong>'+esc(e.label)+'</strong><p>Dia '+e.day+' • '+esc(e.key)+'</p></div><span>+10</span></div>').join("")+'</div>':'<p>Nenhum evento nesta visita.</p>')+'</div>'}
+function questionnairesPage(){const ready=demo.initialDay!==null&&demo.day-demo.initialDay>=30;return title("Questionários","Instrumentos separados. Esta tela simula estados e eventos, sem coletar respostas.")+
+'<div class="alert"><strong>Conteúdo pendente:</strong> perguntas do inicial e acompanhamento não constam no pacote consolidado. Inicial e acompanhamento usam submissões fictícias completas; não representam formulários respondidos ou resultados reais. O Day tem formulário próprio com a fonte oficial.</div>'+section("Relógio da demonstração")+'<div class="panel"><p>Dia '+demo.day+' da simulação. O acompanhamento libera 30 dias após o envio inicial, sem expiração.</p>'+btn("Avançar 1 dia (simulação)","demo-next-day")+' '+btn("Avançar 30 dias (simulação)","demo-advance-30")+'</div>'+section("Instrumentos")+'<div class="grid">'+
+'<div class="panel"><h2>Questionário inicial</h2><p>'+ (demo.initialDay===null?"Pendente":"Envio fictício no dia "+demo.initialDay)+'</p>'+btn("Simular submissão completa (+10)","demo-initial",demo.initialDay===null?"":"disabled")+'</div>'+
+'<div class="panel"><h2>Acompanhamento de 30 dias</h2><p>'+ (demo.followup?"Submissão fictícia concluída":ready?"Liberado, sem expiração":demo.initialDay===null?"Aguardando questionário inicial":"Liberação no dia "+(demo.initialDay+30))+'</p>'+btn("Simular submissão completa (+10)","demo-followup",ready&&!demo.followup?"":"disabled")+'</div>'+
+'<div class="panel"><h2>Reconexão Day</h2><p>Reflexão privada e voluntária, sem diagnóstico. 12 perguntas oficiais, seis dimensões e escala 0–4. Salve parcialmente ou conclua o registro diário. Use somente respostas fictícias.</p>'+btn("Abrir Reconexão Day","goto",'data-role="student" data-page="day"')+'</div>'+
+'<div class="panel"><h2>3FM com Propósito</h2>'+badge("Especificação integral pendente")+'<p>Instrumento adicional: 40 perguntas, cinco dimensões, escala 0–4; disponível após pagamento confirmado. Não impede acesso às aulas.</p><p>Faltam perguntas, mapeamentos, fórmulas, faixas e devolutivas originais. Preenchimento, rascunho, resultados e seus 10 pontos aguardam essa fonte. Não há cálculo ou resultado demonstrativo.</p></div></div>'+section("Comunidade externa")+'<div class="panel"><h2>WhatsApp</h2><p>Simular o clique concede 10 pontos uma única vez; não abre grupo nem comprova ingresso. Remoção de membros após expiração depende de procedimento externo.</p>'+btn("Simular acesso ao WhatsApp (+10)","demo-whatsapp")+'</div>'}
+for(const m of data.modules)for(const l of m.lessons)l.required=true;
+const daySpec={
+  "version": "Day V1.0 — PDF oficial, pp. 3–8",
+  "dimensions": [
+    "Consciência emocional",
+    "Pensamento e percepção",
+    "Limites e autonomia",
+    "Hábitos e autocuidado",
+    "Fé, valores e propósito",
+    "Força e mudança"
+  ],
+  "questions": [
+    "Hoje, consigo reconhecer o que estou sentindo sem me julgar por isso?",
+    "Quando algo me incomoda, consigo perceber minhas emoções antes de decidir como agir?",
+    "Consigo distinguir aquilo que realmente aconteceu daquilo que estou imaginando ou supondo?",
+    "Hoje, consigo considerar outras maneiras de interpretar uma situação difícil?",
+    "Consigo reconhecer o que depende de mim e o que não está sob meu controle?",
+    "Consigo respeitar meus limites sem assumir responsabilidades que pertencem a outras pessoas?",
+    "Hoje, consigo reservar algum tempo ou realizar alguma ação para cuidar de mim?",
+    "Consigo identificar uma pequena atitude que pode contribuir para meu bem-estar neste dia?",
+    "Consigo me conectar com os valores, as convicções ou os princípios que dão sentido à minha vida?",
+    "Hoje, consigo encontrar algum motivo para manter a esperança, mesmo diante das dificuldades?",
+    "Consigo reconhecer algum recurso pessoal que pode me ajudar a enfrentar os desafios de hoje?",
+    "Estou disposto a experimentar uma pequena mudança de atitude, mesmo que não consiga resolver tudo agora?"
+  ],
+  "scale": [
+    "Não consigo neste momento",
+    "Consigo com muita dificuldade",
+    "Consigo parcialmente",
+    "Consigo na maior parte das situações",
+    "Consigo com clareza ou consistência"
+  ],
+  "bands": [
+    [
+      0,
+      9,
+      "Recurso pouco percebido hoje"
+    ],
+    [
+      10,
+      19,
+      "Recurso percebido com dificuldade"
+    ],
+    [
+      20,
+      29,
+      "Recurso parcialmente percebido"
+    ],
+    [
+      30,
+      35,
+      "Recurso percebido com frequência"
+    ],
+    [
+      36,
+      40,
+      "Recurso percebido com consistência"
+    ]
+  ],
+  "messages": [
+    {
+      "id": "D1-F1",
+      "dimension": 0,
+      "band": 0,
+      "message": "Hoje pode estar difícil reconhecer ou acolher o que você sente. Não é preciso resolver tudo de uma vez; comece nomeando uma emoção, sem se condenar por senti-la.",
+      "action": "Faça uma pausa breve e complete: “Neste momento, eu sinto…”. Se for difícil, escolha a palavra mais próxima."
+    },
+    {
+      "id": "D1-F2",
+      "dimension": 0,
+      "band": 1,
+      "message": "Você percebe alguma dificuldade para reconhecer suas emoções. Dar nome ao que sente pode ajudar a criar espaço entre a emoção e a próxima atitude.",
+      "action": "Anote uma situação que mexeu com você e nomeie a emoção principal, sem julgar se ela é certa ou errada."
+    },
+    {
+      "id": "D1-F3",
+      "dimension": 0,
+      "band": 2,
+      "message": "Hoje você reconhece parte do que sente. Continue praticando essa observação com gentileza, especialmente antes de responder a uma situação difícil.",
+      "action": "Antes de uma conversa ou decisão, pergunte a si: “O que estou sentindo e do que preciso agora?”."
+    },
+    {
+      "id": "D1-F4",
+      "dimension": 0,
+      "band": 3,
+      "message": "Você relata conseguir reconhecer suas emoções na maior parte das situações. Essa percepção pode apoiar escolhas mais conscientes.",
+      "action": "Escolha uma situação do dia e observe como reconhecer sua emoção influenciou sua resposta."
+    },
+    {
+      "id": "D1-F5",
+      "dimension": 0,
+      "band": 4,
+      "message": "Neste registro, você percebe suas emoções com consistência. Preserve essa prática sem exigir de si controle perfeito em todos os momentos.",
+      "action": "Mantenha um breve check-in emocional e, se necessário, procure alguém de confiança para conversar."
+    },
+    {
+      "id": "D2-F1",
+      "dimension": 1,
+      "band": 0,
+      "message": "Hoje pode ser difícil separar fatos de suposições. Quando a preocupação aumenta, tente voltar ao que é observável, sem precisar resolver todas as dúvidas agora.",
+      "action": "Escreva um fato concreto e, separadamente, uma coisa que você está supondo. Pergunte: “Isto é um fato ou é um medo?”."
+    },
+    {
+      "id": "D2-F2",
+      "dimension": 1,
+      "band": 1,
+      "message": "Você identifica dificuldade para considerar outras interpretações. Isso pode ser praticado aos poucos, sem negar o que aconteceu.",
+      "action": "Diante de uma preocupação, liste o que sabe com certeza e o que ainda não sabe."
+    },
+    {
+      "id": "D2-F3",
+      "dimension": 1,
+      "band": 2,
+      "message": "Você consegue fazer essa distinção parcialmente. Continue examinando os fatos e abrindo espaço para mais de uma interpretação.",
+      "action": "Pergunte: “Que outra explicação também seria possível, sem ignorar os fatos?”."
+    },
+    {
+      "id": "D2-F4",
+      "dimension": 1,
+      "band": 3,
+      "message": "Você relata conseguir avaliar situações com flexibilidade na maior parte das vezes. Essa habilidade pode ajudar a evitar decisões tomadas apenas pelo medo.",
+      "action": "Antes de concluir algo, confira se sua interpretação se baseia em fatos observáveis."
+    },
+    {
+      "id": "D2-F5",
+      "dimension": 1,
+      "band": 4,
+      "message": "Neste registro, você percebe consistência ao distinguir fatos de suposições. Mantenha essa prática sem exigir certeza sobre aquilo que ainda não pode saber.",
+      "action": "Faça uma breve auditoria de preocupações: o que depende de mim e o que não depende?"
+    },
+    {
+      "id": "D3-F1",
+      "dimension": 2,
+      "band": 0,
+      "message": "Hoje pode estar difícil separar sua responsabilidade daquilo que pertence a outra pessoa. Você não precisa resolver tudo sozinho.",
+      "action": "Escolha uma preocupação e divida em duas listas: “depende de mim” e “não está sob meu controle”."
+    },
+    {
+      "id": "D3-F2",
+      "dimension": 2,
+      "band": 1,
+      "message": "Você percebe dificuldade para sustentar seus limites. Um limite começa pela clareza sobre o que você fará, não por tentar controlar a decisão de outra pessoa.",
+      "action": "Escreva um limite concreto: comportamento observado, impacto em você e atitude que está ao seu alcance."
+    },
+    {
+      "id": "D3-F3",
+      "dimension": 2,
+      "band": 2,
+      "message": "Você identifica alguns limites, mas talvez ainda seja difícil mantê-los em todas as situações. Prefira compromissos realistas a ameaças que não pretende cumprir.",
+      "action": "Revise um limite e confirme se ele é claro, possível e depende de uma ação sua."
+    },
+    {
+      "id": "D3-F4",
+      "dimension": 2,
+      "band": 3,
+      "message": "Você relata conseguir reconhecer e respeitar seus limites na maior parte das situações. Continue sustentando-os com clareza e respeito.",
+      "action": "Pratique uma frase breve que expresse seu limite sem acusação ou ameaça."
+    },
+    {
+      "id": "D3-F5",
+      "dimension": 2,
+      "band": 4,
+      "message": "Neste registro, você percebe consistência ao reconhecer sua autonomia e seus limites. Lembre-se de que firmeza e cuidado podem caminhar juntos.",
+      "action": "Observe se o limite escolhido protege sua segurança e seu bem-estar, sem pretender controlar outra pessoa."
+    },
+    {
+      "id": "D4-F1",
+      "dimension": 3,
+      "band": 0,
+      "message": "Hoje o autocuidado pode parecer distante ou difícil. Comece por uma atitude pequena e viável, sem transformar o cuidado em mais uma cobrança.",
+      "action": "Escolha uma ação mínima para hoje: beber água, descansar alguns minutos, alimentar-se ou falar com alguém de confiança."
+    },
+    {
+      "id": "D4-F2",
+      "dimension": 3,
+      "band": 1,
+      "message": "Você percebe dificuldade para reservar espaço para si. Seu cuidado também pertence a esta história e não precisa esperar que todos os problemas acabem.",
+      "action": "Reserve alguns minutos para uma necessidade básica sua e escolha um horário realista."
+    },
+    {
+      "id": "D4-F3",
+      "dimension": 3,
+      "band": 2,
+      "message": "Você consegue identificar algumas ações de cuidado. Tente torná-las concretas e compatíveis com o que é possível hoje.",
+      "action": "Defina uma ação pequena, quando fará e o que pode ajudar você a realizá-la."
+    },
+    {
+      "id": "D4-F4",
+      "dimension": 3,
+      "band": 3,
+      "message": "Você relata conseguir cuidar de si na maior parte das situações. Reconheça essas escolhas e procure mantê-las sem buscar perfeição.",
+      "action": "Registre qual atitude de autocuidado foi possível e como deseja repeti-la."
+    },
+    {
+      "id": "D4-F5",
+      "dimension": 3,
+      "band": 4,
+      "message": "Neste registro, você percebe consistência em ações de cuidado. Preserve essa base e peça apoio quando suas necessidades excederem os recursos disponíveis.",
+      "action": "Mantenha uma rotina de cuidado realista e identifique quem pode apoiar você quando necessário."
+    },
+    {
+      "id": "D5-F1",
+      "dimension": 4,
+      "band": 0,
+      "message": "Hoje pode estar difícil sentir esperança ou conexão com aquilo que dá sentido à sua vida. Não é necessário fingir que está tudo bem para buscar apoio e significado.",
+      "action": "Escolha um valor importante para você e pergunte: “Qual pequena atitude de hoje pode expressar esse valor?”."
+    },
+    {
+      "id": "D5-F2",
+      "dimension": 4,
+      "band": 1,
+      "message": "Você percebe dificuldade para se conectar com seus valores ou com a esperança. Recomece com algo simples, sem exigir uma resposta pronta para tudo.",
+      "action": "Reserve um momento para oração, reflexão, leitura significativa ou conversa com alguém de confiança, conforme suas convicções."
+    },
+    {
+      "id": "D5-F3",
+      "dimension": 4,
+      "band": 2,
+      "message": "Você encontra algum apoio em seus valores e convicções. Continue se aproximando deles por meio de escolhas concretas, respeitando seu momento.",
+      "action": "Escreva uma razão pela qual vale a pena cuidar de si hoje e uma atitude que combine com ela."
+    },
+    {
+      "id": "D5-F4",
+      "dimension": 4,
+      "band": 3,
+      "message": "Você relata conseguir se conectar com seus valores e manter alguma esperança na maior parte das situações. Use essa referência para orientar um passo possível.",
+      "action": "Escolha uma decisão do dia e confira se ela está alinhada aos seus valores."
+    },
+    {
+      "id": "D5-F5",
+      "dimension": 4,
+      "band": 4,
+      "message": "Neste registro, você percebe consistência na conexão com seus valores e propósito. Mantenha a esperança ligada à realidade e às ações possíveis, sem exigir garantias.",
+      "action": "Registre uma atitude concreta que represente seus valores e reconheça o passo dado."
+    },
+    {
+      "id": "D6-F1",
+      "dimension": 5,
+      "band": 0,
+      "message": "Hoje pode ser difícil reconhecer recursos pessoais ou imaginar uma mudança possível. Você não precisa transformar tudo agora; um passo pequeno já pode ser um começo.",
+      "action": "Complete: “Mesmo diante desta dificuldade, um recurso que posso buscar é…”. Pode ser uma pessoa, serviço, valor ou ação simples."
+    },
+    {
+      "id": "D6-F2",
+      "dimension": 5,
+      "band": 1,
+      "message": "Você percebe dificuldade para identificar recursos ou iniciar uma mudança. Pedir ajuda também pode ser uma forma de força.",
+      "action": "Escolha uma pequena atitude e identifique quem ou o que pode ajudar você a realizá-la."
+    },
+    {
+      "id": "D6-F3",
+      "dimension": 5,
+      "band": 2,
+      "message": "Você reconhece alguns recursos e alguma disposição para mudar. Transforme essa intenção em uma ação específica, sem exigir que ela resolva tudo.",
+      "action": "Defina um passo de hoje que seja pequeno, seguro e realizável."
+    },
+    {
+      "id": "D6-F4",
+      "dimension": 5,
+      "band": 3,
+      "message": "Você relata reconhecer recursos pessoais e experimentar mudanças na maior parte das situações. Continue valorizando o processo, não apenas o resultado final.",
+      "action": "Registre uma ação que você pode realizar hoje e, depois, observe o que aprendeu com ela."
+    },
+    {
+      "id": "D6-F5",
+      "dimension": 5,
+      "band": 4,
+      "message": "Neste registro, você percebe recursos e disposição para mudar com consistência. Mantenha a flexibilidade: ajustar o caminho também faz parte da mudança.",
+      "action": "Escolha uma mudança pequena para manter e reconheça o que já está funcionando."
+    }
+  ]
+};
+function validDayAnswer(value){return Number.isInteger(value)&&value>=0&&value<=4}
+function currentDayAnswers(){return demo.dayEntries[demo.day]?.answers||Array(12).fill(null)}
+function dayMetrics(answers){if(!Array.isArray(answers)||answers.length!==12)return {complete:false,dimensions:Array(6).fill(null),sum:null,overall:null};const complete=Array.from(answers).every(validDayAnswer);return {complete,dimensions:daySpec.dimensions.map((_,i)=>validDayAnswer(answers[i*2])&&validDayAnswer(answers[i*2+1])?(answers[i*2]+answers[i*2+1])/2:null),sum:complete?answers.reduce((a,b)=>a+b,0):null,overall:complete?answers.reduce((a,b)=>a+b,0)/12:null}}
+function saveDayAnswer(index,value){if(state.role!=="student"||!Number.isInteger(index)||index<0||index>=12)return false;if(value!==null&&value!==""&&!(typeof value==="number"||typeof value==="string"&&/^[0-4]$/.test(value)))return false;const answer=value===""||value===null?null:Number(value);if(answer!==null&&!validDayAnswer(answer))return false;const entry=demo.dayEntries[demo.day]||(demo.dayEntries[demo.day]={answers:Array(12).fill(null),submitted:null,version:daySpec.version});entry.answers[index]=answer;return true}
+function dayStatus(){const answers=currentDayAnswers();const entry=demo.dayEntries[demo.day];if(entry?.submitted&&answers.every((a,i)=>a===entry.submitted[i]))return "12/12 respondidas. Registro diário concluído nesta visita. Editar e reenviar não concede pontos adicionais.";const missing=answers.map((v,i)=>validDayAnswer(v)?null:"Q"+(i+1)).filter(Boolean);return (12-missing.length)+"/12 respondidas. "+(missing.length?"Pendentes: "+missing.join(", ")+". Sem nota geral ou pontos de conclusão.":"Todas respondidas. Use Concluir registro demonstrativo para confirmar.")+" Salvamento apenas na memória desta visita."}
+function submitDay(){if(state.role!=="student")return false;const entry=demo.dayEntries[demo.day];if(!entry||!dayMetrics(entry.answers).complete){toast("Responda as 12 perguntas com valores inteiros de 0 a 4. Nenhum ponto concedido.");return false}entry.submitted=entry.answers.slice();const granted=award("day:"+demo.day,"Reconexão Day — 12 respostas completas, dia "+demo.day);toast(granted?"Registro diário fictício concluído: +10 pontos.":"Registro do dia atualizado. Os 10 pontos já foram concedidos, sem duplicação.");return true}
+function dayBand(sum,count){const index=daySpec.bands.findIndex(([min,max])=>sum*10>=min*count&&sum*10<=max*count);return index<0?null:index}
+function exactAverage(sum,count){if(sum%count===0)return String(sum/count);if(sum*2%count===0)return String(sum/count).replace(".",",");return sum+"/"+count}
+function dayResult(){const entry=demo.dayEntries[demo.day];if(!entry?.submitted||!entry.answers.every((a,i)=>a===entry.submitted[i]))return '<p>O registro atual ainda não foi concluído. Nenhuma nota geral é exibida.</p>';const r=dayMetrics(entry.submitted);const band=dayBand(r.sum,12);const min=Math.min(...r.dimensions),tied=r.dimensions.map((v,i)=>v===min?i:null).filter(i=>i!==null);const priority=tied.length===1?tied[0]:null;const message=priority===null?null:daySpec.messages.find(m=>m.dimension===priority&&m.band===dayBand(r.dimensions[priority]*2,2));return '<h2>Resultado educativo do dia '+demo.day+'</h2><p>Nota geral: <strong>'+exactAverage(r.sum,12)+'</strong> na escala de 0 a 4. Cálculo exato: '+r.sum+' ÷ 12.</p><p>'+ (band===null?'Classificação geral pendente: este valor cai entre os intervalos publicados. A precisão e o arredondamento aguardam decisão.':esc(daySpec.bands[band][2]))+'</p><div class="grid grid-3">'+r.dimensions.map((value,i)=>'<div class="day-dimension"><h3>D'+(i+1)+' — '+esc(daySpec.dimensions[i])+'</h3><p><strong>'+String(value).replace(".",",")+'</strong> / 4 • '+esc(daySpec.bands[dayBand(value*2,2)][2])+'</p></div>').join("")+'</div>'+ (message?'<div class="alert"><h3>'+esc(daySpec.dimensions[priority])+'</h3><p>'+esc(message.message)+'</p><p><strong>Ação prática sugerida:</strong> '+esc(message.action)+'</p><p>Texto literal da especificação V1 ('+esc(message.id)+'). Revisão editorial e vínculo ao conteúdo do curso pendentes.</p></div>':'<div class="alert">Dimensões com menor média: '+tied.map(i=>'D'+(i+1)).join(", ")+'. Devolutiva principal pendente de regra aprovada de desempate. Nenhuma dimensão foi escolhida automaticamente.</div>')+'<p>Este resultado é um retrato do que você percebe neste momento. Use-o como ponto de partida para escolher um pequeno passo, não como rótulo sobre quem você é.</p><p class="small">Reflexão educativa, sem diagnóstico. As médias de 0 a 4 são distintas dos 10 pontos de conclusão. Fonte: '+esc(daySpec.version)+'.</p>'}
+function dayPage(){const answers=currentDayAnswers();return title("Reconexão Day","Uma pequena evolução por dia. Conhecer-se. Escolher. Agir. Evoluir.")+ '<div class="alert"><strong>Use somente respostas fictícias.</strong> Atividade voluntária de reflexão educativa, sem diagnóstico. Não bloqueia aulas. Os registros existem apenas nesta visita e desaparecem ao recarregar.</div>'+section("Registro demonstrativo — dia "+demo.day,btn("Preencher exemplo fictício (2)","day-example"))+'<p id="day-status" role="status" aria-live="polite">'+esc(dayStatus())+'</p><form id="day-form" class="stack">'+daySpec.dimensions.map((dimension,d)=>'<fieldset class="panel day-fieldset"><legend>D'+(d+1)+' — '+esc(dimension)+'</legend>'+[d*2,d*2+1].map(i=>'<div class="field"><label for="day-q'+i+'">Q'+(i+1)+'. '+esc(daySpec.questions[i])+'</label><select id="day-q'+i+'" data-day-question="'+i+'" name="q'+(i+1)+'"><option value="">Selecione uma resposta fictícia</option>'+daySpec.scale.map((label,value)=>'<option value="'+value+'" '+(answers[i]===value?'selected':'')+'>'+value+' — '+esc(label)+'</option>').join("")+'</select></div>').join("")+'</fieldset>').join("")+'<div class="actions-row">'+btn("Salvar parcial nesta visita","day-save")+'<button type="submit" class="btn">Concluir registro demonstrativo</button></div></form>'+section("Resultado do registro atual")+'<div class="panel" id="day-result">'+dayResult()+'</div>'+section("Histórico demonstrativo")+'<div class="panel"><p>Dias sem resposta não recebem zero. Fuso e virada do dia real aguardam definição; use o relógio demonstrativo em Questionários.</p>'+ (Object.keys(demo.dayEntries).length?'<ul>'+Object.entries(demo.dayEntries).map(([day,entry])=>'<li>Dia '+day+': '+(entry.submitted?'conclusão registrada':'rascunho parcial')+' • '+entry.answers.filter(validDayAnswer).length+'/12 respostas atuais</li>').join("")+'</ul>':'<p>Sem registros nesta visita.</p>')+'</div>'}
+function render(){if(state.role==="home"){app.innerHTML=home();return}let body="";if(state.role==="admin"){const map={home:adminDashboard,content:adminContent,module:adminModuleDetail,meetings:adminMeetings,groups:adminGroups,attendance:adminAttendance,notices:adminNotices,emails:adminEmails,journey:journeyPage};body=(map[state.page]||adminDashboard)()}else{const map={home:studentHome,classes:studentClasses,module:studentModule,video:studentVideo,meetings:studentMeetings,groups:studentGroups,materials:studentMaterials,notices:studentNotices,journey:journeyPage,questionnaires:questionnairesPage,day:dayPage,account:studentAccount};body=(map[state.page]||studentHome)()}app.innerHTML=layout(body)}
 document.addEventListener("click",e=>{
 const el=e.target.closest("[data-action]");if(!el)return;const a=el.dataset.action,id=Number(el.dataset.id);
 if(a==="goto"){state.role=el.dataset.role||state.role;state.page=el.dataset.page||"home";if(state.role==="home")state.page="home";render();window.scrollTo({top:0,behavior:"instant"})}
+else if(a==="day-save"){render();toast("Rascunho guardado somente nesta visita. Nenhum ponto concedido.")}
+else if(a==="day-example"){for(let i=0;i<12;i++)saveDayAnswer(i,2);render();toast("Doze valores fictícios preenchidos. Conclua para simular o envio.")}
+else if(a.startsWith("demo-")){demoAction(a,id);render()}
 else if(a==="module"){state.adminModule=id;state.page="module";render()}
 else if(a==="student-module"){state.studentModule=id;state.page="module";render()}
-else if(a==="watch"){state.lesson=id;state.page="video";render()}
+else if(a==="watch"){if(!availableLesson(id)){toast("Aula ou módulo indisponível. Histórico preservado.");return}state.lesson=id;state.page="video";render()}
 else if(a==="form")openForm(el.dataset.type,el.dataset.id?Number(el.dataset.id):null,el.dataset.module?Number(el.dataset.module):null);
 else if(a==="close-modal")closeModal();
 else if(a==="toggle-module"){const m=data.modules.find(m=>m.id===id);if(m)m.status=m.status==="Publicado"?"Rascunho":"Publicado";render();toast("Situação do módulo atualizada nesta sessão.")}
@@ -186,10 +514,12 @@ else if(a==="filter"){state.filter=el.dataset.filter;render()}
 else if(a==="attendance-filter"){state.attendanceFilter=el.dataset.filter;render()}
 else if(a==="mark-attendance"){const p=data.attendance[Number(el.dataset.index)];if(p)p.status=el.dataset.value;render();toast("Presença atualizada. O dashboard acompanha esta alteração.")}
 else if(a==="group-members")memberModal(id);
-else if(a==="enroll"){const g=data.groups.find(g=>g.id===id);if(!g)return;if(!g.joined&&g.members.length>=g.capacity){toast("Não há vagas disponíveis.");return}g.joined=!g.joined;render();toast(g.joined?"Inscrição simulada confirmada.":"Inscrição simulada cancelada.")}
+else if(a==="enroll"){if(!progression().unlocked){toast("Turmas do Reconexão II: conclua a progressão simulada primeiro.");return}const g=data.groups.find(g=>g.id===id);if(!g)return;if(!g.joined&&g.members.length>=g.capacity){toast("Não há vagas disponíveis.");return}if(g.joined){toast("Cancelamento aguarda regra aprovada.");return}g.joined=true;render();toast("Inscrição simulada confirmada.")}
 else if(a==="toast")toast(el.dataset.message||"Ação apenas demonstrativa.");
 else if(a==="fake-video")toast("A reprodução depende da integração futura com hospedagem de vídeos.");
 });
-document.addEventListener("submit",e=>{if(e.target.id!=="demo-form")return;e.preventDefault();saveForm(e.target)});
+document.addEventListener("submit",e=>{if(e.target.id==="day-form"){e.preventDefault();submitDay();render();return}if(e.target.id!=="demo-form")return;e.preventDefault();saveForm(e.target)});
+document.addEventListener("change",e=>{if(e.target.dataset.dayQuestion===undefined)return;saveDayAnswer(Number(e.target.dataset.dayQuestion),e.target.value);const status=document.getElementById("day-status");if(status)status.textContent=dayStatus();const result=document.getElementById("day-result");if(result)result.innerHTML=dayResult()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
 render();
+
