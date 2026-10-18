@@ -10,7 +10,7 @@ A tela inicial permite escolher **Área do aluno** ou **Painel administrativo**.
 - Resumo de estudos e próximo encontro
 - Módulos com videoaulas publicadas
 - Reuniões semanais e gravações simuladas
-- Inscrição e cancelamento em encontros de capacidade limitada
+- Inscrição demonstrativa em turmas on-line do II com capacidade limitada; cancelamento pendente
 - Materiais de apoio, avisos e dados demonstrativos do acesso
 
 ### Painel administrativo
@@ -34,7 +34,7 @@ Todos os dados são fictícios. As ações interativas atualizam apenas a memór
 
 ## GitHub Pages
 
-Em **Settings → Pages**, escolha **Deploy from a branch**, **main**, **/(root)**. O endereço esperado é:
+O GitHub Pages oficial atual usa a versão de `main`. Não altere essa configuração para revisar este PR. O endereço oficial existente é:
 
 https://arthurcarvalho0001.github.io/Reconexao/
 
@@ -43,7 +43,7 @@ https://arthurcarvalho0001.github.io/Reconexao/
 
 Branch de revisão: `feature/atualizacao-prototipo`. Consulte a [comparação com os requisitos](docs/REVISAO_PROTOTIPO.md) e as [evidências de teste](docs/TESTES_PROTOTIPO.md).
 
-Na Área do aluno, **Questionários** demonstra submissões fictícias do inicial, acompanhamento de 30 dias e Reconexão Day, sem coletar respostas. Use os botões para avançar o relógio da demonstração. O inicial inicia a contagem de 30 dias. O 3FM aparece separado e pendente da especificação integral; não calcula resultados nem concede pontos sem essa fonte.
+Na Área do aluno, **Questionários** demonstra submissões fictícias do inicial e acompanhamento de 30 dias, sem coletar suas respostas. **Reconexão Day** é uma tela separada, com 12 perguntas oficiais, seis dimensões e escala 0–4. Use apenas valores fictícios; o rascunho fica na memória da visita, com indicação das perguntas pendentes. Somente concluir as 12 respostas válidas concede 10 pontos uma vez por dia demonstrativo, independentemente da média. Edição no mesmo dia não concede pontos adicionais. Use os botões para avançar o relógio da demonstração. O inicial inicia a contagem de 30 dias. O 3FM aparece separado e pendente da especificação integral; não calcula resultados nem concede pontos sem essa fonte.
 
 Em **Meus módulos**, o botão “Simular 90% assistidos” registra uma conclusão fictícia e 10 pontos uma única vez. Reuniões, gravações e o clique fictício no WhatsApp têm eventos próprios. O botão de Mediação simula somente o início da gravação, cumprindo participação sem pontos automáticos. Nenhuma reunião ou grupo externo é aberto.
 
@@ -67,3 +67,12 @@ python3 -m http.server 8000
 ```
 
 Abra http://localhost:8000. Não altere a configuração Pages nem faça merge antes da revisão. Nenhuma arquitetura de produção ou fornecedor é adotado por este protótipo.
+
+## Revisão Day12 e QA-P01–03 — 18/10/2026
+
+- Conteúdo despublicado é bloqueado na seleção, no atalho Continuar aula e na renderização de uma tela já selecionada. O histórico e os pontos permanecem.
+- Home, Reuniões e próxima atividade administrativa consultam os mesmos registros. Editar título, data, horário, link ou situação gera aviso interno fictício; salvar sem alteração não duplica aviso. Nenhum e-mail é enviado.
+- Cadastro/edição de aulas preserva `video` em memória e repõe esse valor ao reabrir o formulário. URL deve usar HTTP/HTTPS; nenhum endereço é carregado pelo player demonstrativo.
+- Day apresenta médias exatas e textos literais da fonte V1. Sem regra de arredondamento, médias periódicas aparecem como fração (ex.: 43/12). Classificação entre intervalos e devolutiva principal em empate ficam sinalizadas como pendentes. O banco editorial e os vínculos de conteúdo não são administráveis nesta entrega.
+
+Após revisão técnica/QA, apresente ao cliente pela execução local da branch, compartilhando a tela. Confira o SHA apresentado. Não troque a branch do Pages, não faça merge nem retire o PR #1 de rascunho. Aceite do cliente e autorização posterior de publicação são etapas distintas. Veja o roteiro e os limites em [TESTES_PROTOTIPO.md](docs/TESTES_PROTOTIPO.md).
