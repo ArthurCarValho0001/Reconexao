@@ -1,6 +1,6 @@
 # Reconexão I — Protótipo navegável
 
-Protótipo estático da plataforma Reconexão, publicado pelo GitHub Pages, com identidade visual em azul-marinho e preto.
+Protótipo estático da plataforma Reconexão, publicado pelo GitHub Pages, com identidade visual atualizada com a paleta da logo enviada pelo cliente: azul profundo, verde-petróleo e verde-folha.
 
 ## Como navegar
 
@@ -76,3 +76,11 @@ Abra http://localhost:8000. Não altere a configuração Pages nem faça merge a
 - Day apresenta médias exatas e textos literais da fonte V1. Sem regra de arredondamento, médias periódicas aparecem como fração (ex.: 43/12). Classificação entre intervalos e devolutiva principal em empate ficam sinalizadas como pendentes. O banco editorial e os vínculos de conteúdo não são administráveis nesta entrega.
 
 Após revisão técnica/QA, apresente ao cliente pela execução local da branch, compartilhando a tela. Confira o SHA apresentado. Não troque a branch do Pages, não faça merge nem retire o PR #1 de rascunho. Aceite do cliente e autorização posterior de publicação são etapas distintas. Veja o roteiro e os limites em [TESTES_PROTOTIPO.md](docs/TESTES_PROTOTIPO.md).
+
+## Identidade visual enviada pelo cliente — 18/10/2026
+
+O símbolo da imagem `ReconexaoLogo.jpeg` substitui o R genérico na Home, no menu e no favicon. `assets/reconexao-symbol.svg` contém os bytes da imagem original em um viewport que mostra somente o símbolo; não é um redesenho vetorial. O fundo claro foi preservado para manter os detalhes originais. O nome aparece em texto ao lado no cabeçalho.
+
+Paleta aplicada: azul profundo `#082e56`, verde-petróleo `#246e6b`, verde-folha `#578b67` e fundo suave `#e8f3ec`. Os tons derivados foram selecionados visualmente da imagem, sem pretender definir um manual oficial de marca. Cores de alerta/erro continuam semânticas. Nova solicitação do cliente substitui a diretriz anterior de logo R genérica/paleta exclusivamente azul-preto para esta revisão.
+
+A mudança afeta apresentação e favicon; não altera regras, pontos ou integrações. PR #1 continua em rascunho. Sem merge ou publicação. Sintaxe e 19 testes das regras simuladas passaram; revisão visual em navegador continua pendente por executável indisponível.
