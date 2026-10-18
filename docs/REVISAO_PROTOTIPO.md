@@ -31,7 +31,7 @@ Não foram reescritos os documentos oficiais de negócio nem o relatório histó
 
 | Funcionalidade | Estado demonstrativo nesta branch |
 |---|---|
-| Home, logo R, azul-marinho/preto, aluno/admin, sem Conhecer | Preservados; `index.html` inalterado. CSS anterior mantido, com ajustes locais do Day |
+| Home, logo fornecida, aluno/admin, sem Conhecer | Logo e paleta atualizadas na revisão visual posterior solicitada pelo cliente; comportamento e estrutura da Home preservados |
 | Reconexão I e II | Jornada I e checklist/liberação fictícia II. Sem modalidade comercial inventada |
 | Aulas sem sequência | Mantidas. Referência de oito aulas explicitada; biblioteca usa exemplos reduzidos e admin adiciona quantidade livre |
 | Gestão de módulos/aulas | Criação, edição, rascunho/publicação e obrigatoriedade fictícia mantidas. Ordenação e exclusões não implementadas |
@@ -61,3 +61,9 @@ Não foram reescritos os documentos oficiais de negócio nem o relatório histó
 ## Gate de entrega
 
 Esta revisão está preparada para reteste técnico/QA. Não é aceite do cliente nem prontidão para produção. Testes, limitações e apresentação local em [TESTES_PROTOTIPO.md](TESTES_PROTOTIPO.md). Antes de qualquer publicação oficial: revisão técnica/QA → aceite expresso do cliente por SHA → autorização posterior do responsável. PR #1 permanece draft.
+
+## Atualização visual posterior — logo fornecida pelo cliente
+
+Nova instrução de 18/10/2026 autoriza substituir o R genérico e ampliar a paleta anterior. Símbolo original aplicado na Home/menu e como favicon por meio de `assets/reconexao-symbol.svg`, preservando o bitmap em uma base clara e exibindo somente o símbolo no viewport. Não houve redesenho ou remoção de fundo. Nome Reconexão mantido em texto serifado.
+
+Paleta: azul profundo #082e56, verde-petróleo #246e6b, verde-folha #578b67 e superfícies #e8f3ec. Botões, menu, gráficos e fundos seguem esses tons; alertas preservam significado. Contrastes pontuais conferidos: texto branco/botão primário 5,97:1; marca clara/fundo azul 12,70:1; texto secundário/fundo claro 5,34:1. Isso não é auditoria integral de acessibilidade. Sintaxe e 19 testes passaram; nenhuma inspeção visual em navegador foi realizada. PR continua draft, sem merge/Pages.
