@@ -41,7 +41,7 @@ Os testes usam `node:vm` e DOM/FormData mínimos para executar as funções e o 
 
 Executar primeiro com revisor técnico/QA, em 1440px e 390px e com teclado. Registrar navegador, largura, SHA, entradas e resultado esperado/obtido.
 
-1. Home: conferir R, azul-marinho/preto e entradas Aluno/Admin, sem Conhecer. Em mobile, verificar menu horizontal e aviso de demonstração visível.
+1. Home: conferir logo fornecida, azul profundo/verde-petróleo/verde-folha e entradas Aluno/Admin, sem Conhecer. Em mobile, verificar menu horizontal e aviso de demonstração visível.
 2. Admin → Conteúdos: despublicar aula selecionada na Home e depois seu módulo. Como aluno, tentar Continuar aula e navegação normal. Reabrir o módulo após republicar; os pontos já concedidos devem permanecer, sem duplicação.
 3. Admin → Reuniões: mudar título, data e hora. Conferir agenda e Home do aluno e novo aviso. Salvar novamente sem mudança: nenhum aviso adicional. Confirmar que nenhum e-mail real foi enviado.
 4. Admin → aula: informar `https://video.example.test/revisao`, salvar e reabrir. Conferir o mesmo valor; nenhum vídeo externo deve ser requisitado pelo protótipo.
@@ -66,3 +66,7 @@ python -m http.server 8000 --bind 127.0.0.1
 Abrir `http://127.0.0.1:8000` e compartilhar a tela. Alternativa: baixar o ZIP da branch e servir sua pasta localmente. Isso não modifica o Pages oficial nem cria serviço externo. Use somente dados fictícios, informe limitações e associe o aceite do cliente ao SHA apresentado.
 
 O responsável autoriza merge/publicação somente após revisão técnica/QA e aceite expresso do cliente. Manter PR #1 em rascunho; não trocar a origem do Pages ou criar prévia externa sem autorização específica.
+
+## Reteste da atualização de marca
+
+Após aplicar logo/paleta/favicon: `node --check app.js`, `node --test tests/prototype.test.cjs` (19/19) e `git diff --check` passaram. O símbolo reutiliza o bitmap original; identidade não foi redesenhada. A configuração do favicon aponta para o asset local. Favicon em navegadores, corte do símbolo, alinhamento, responsividade e foco ainda requerem revisão visual real; não foram aprovados por estes testes.
