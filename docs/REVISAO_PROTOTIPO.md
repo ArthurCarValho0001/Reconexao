@@ -1,53 +1,63 @@
-# Comparação e revisão do protótipo
+# Revisão do protótipo — Day12 e QA-P01/P02/P03
 
-Data: 18/10/2026. Repositório: ArthurCarValho0001/Reconexao. Branch: `feature/atualizacao-prototipo`. Sem merge ou publicação solicitada nesta entrega.
+Data: 18/10/2026. Repositório: ArthurCarValho0001/Reconexao. Branch: `feature/atualizacao-prototipo`, PR #1 em rascunho. Base desta revisão: head `1593d88ba13329e0d522b728f1e70e294f2b0a5f`. Nenhum merge ou publicação.
 
-## Fontes e limites
+## Fontes, precedência e autorização
 
-Inspecionados integralmente `index.html`, `styles.css`, `app.js` e `README.md` de main antes das alterações. A consulta de `AGENTS.md` no repositório retornou 404. Foram lidos o AGENTS e todos os documentos do pacote `Reconexao_Documentacao_Atualizada.zip`, inclusive requisitos, regras, escopo, arquitetura e critérios de aceite. A arquitetura é proposta, sem aprovação de stack/provedores; este trabalho mantém HTML/CSS/JS sem dependências novas.
+O ZIP anexado continua sendo a versão anterior, com Day de cinco perguntas. A regra antiga está substituída pela DEC-001 e pela instrução expressa desta tarefa. Foram localizados e lidos também:
 
-Os requisitos consolidados prevalecem sobre descrições antigas do protótipo. Não há documento integral do 3FM no pacote. Nenhuma afirmação de implementação em outras conversas foi utilizada como evidência.
+- `Reconexao_Consolidacao_Tecnica_01.zip`: AGENTS, REQUISITOS, REGRAS_NEGOCIO, ESCOPO, CRITERIOS_ACEITE, DECISOES, ESPECIFICACAO_DAY e relatório do Coordenador.
+- `Reconexao_Day_Especificacao_Funcional_V1.pdf`: fonte integral do Day, incluindo perguntas/escala, fórmulas, faixas, 30 mensagens e ações e limitações. Seus textos não são a especificação do 3FM.
+- `Revisao_Seguranca_Qualidade_Reconexao.zip`: relatório, script histórico e evidências; os três defeitos também constam do reteste do Coordenador no head acima.
+- Código atual da branch, README, testes e documentação do PR. O estado remoto foi conferido antes de editar.
 
-## Diferenças encontradas e tratamento
+O AGENTS da consolidação proibia código durante aquela reunião documental. Esta nova solicitação autoriza explicitamente as correções na branch existente e atualização do PR, preservando o bloqueio de merge/Pages/draft. Não aprova stack, serviços ou aplicação real. Nenhum agente externo foi presumido participante ou aprovador.
 
-| Tema / referência | Antes | Nesta branch / pendência |
+Não foram reescritos os documentos oficiais de negócio nem o relatório histórico do QA como se já aprovassem este código. Esta revisão registra a implementação demonstrativa e suas limitações.
+
+## Alterações verificáveis
+
+| Tema / referência | Implementado nesta revisão | Limitação |
 |---|---|---|
-| Identidade, Home, CA-051 | Azul-marinho/preto, R, entrada aluno/admin; sem Conhecer | Preservados; index.html inalterado |
-| Demonstração, RF-072 / CA-050 | Aviso na Home e selo oculto em telas pequenas | Aviso permanente também no conteúdo, em qualquer largura; estados somente em memória |
-| Acesso, RF-001–006 | Sem login; perfil Major; acesso ativo fixo | Continua demonstrativo. Sem sessão única, autenticação, autorização real, estorno ou bloqueio por expiração |
-| Oferta, RN-001–003 | Afirmava pagamento único e nova compra como renovação | Mantidos seis meses iniciais; condições comerciais e renovação marcadas pendentes |
-| Aulas e pontos, RF-011–015 / RN-010 | Aulas publicadas sem sequência; conclusão apenas toast; progresso fixo em 35% | Evento explícito de 90% fictícios, +10 uma vez por aula; progresso calculado; histórico preservado ao despublicar |
-| Telemetria, CA-011 | Player ilustrativo | Continua sem vídeo/segmentos reais e sem antifraude; botão não representa assistir efetivamente 90% |
-| Obrigatoriedade, RF-061 | Não modelada | Exemplos iniciais marcados obrigatórios somente como dados de demonstração; seletor na edição/criação da aula. Não define currículo real |
-| Live e gravação, RN-012–014 | Botões exibiam toast | Pontos distintos por clique fictício e por 90% fictícios da gravação; sem alterar registro de presença |
-| Mediação, RF-035–036 | Ausente | Cenário declarado de gravação disponível: iniciar cumpre participação sem pontos automáticos. Janela administrativa/reabertura continuam pendentes de implementação |
-| Pontos e progressão, RF-060–064 | Ausentes | Saldo, histórico por chave de evento, todos os pré-requisitos juntos, pagamento II separado e liberação automática simulada. 3FM não obrigatório |
-| Inicial e 30 dias, RF-040–041 | Ausentes | Instrumentos separados; submissões fictícias completas; relógio relativo; espera de 30 dias desde inicial, sem expiração após liberação; sem formulários ou resultados inventados |
-| Reconexão Day, RF-042 | Ausente | Evento de cinco respostas fictícias no mesmo dia; repetir não pontua novamente; próximo dia permite novo evento; sem coletar reflexões |
-| 3FM, RF-043–051 | Ausente | Card separado com características aprovadas e bloqueio pela falta da fonte integral. Sem perguntas, rascunho, pontuação, classificações ou cálculo fictícios |
-| WhatsApp, RF-038 / RN-052 | Sem acesso dedicado | Simulação do clique uma vez, sem abrir grupo ou comprovar ingresso; retirada de membros não automatizada |
-| Turmas II, RF-037 / RN-051 | Reserva e cancelamento disponíveis no I | Identificadas como II/on-line; reserva condicionada à progressão simulada; cancelamento sinalizado pendente. Capacidade local preservada; não testa concorrência real |
-| Exercícios, RF-020–024 | Ausentes | Permanecem pendentes: três tipos, submissão, consulta e restrições de edição/exclusão |
-| Administração, RF-070–071 | Dashboard, conteúdo, reuniões, capacidade, presença, avisos e e-mails fictícios | Preservados; acrescentada consulta à jornada fictícia sem concessão administrativa de pontos. Gestão real de alunos, ofertas, materiais, respostas e relatórios continua pendente |
-| Conteúdo e exclusões, RN-031–036 | Publicação/despublicação e edição; sem exclusão | Preservadas sem criar exclusão. Histórico local de pontos independe da publicação. Ordenação, cancelamento/reativação de lives com avisos e políticas de exclusão ainda não implementados |
-| Materiais / e-book, RF-014 | Exemplos com toast | Preservados; sem leitor real ou arquivos reais |
-| Integrações e operação | Sem backend ou serviços reais | Sem novas integrações, segredos ou contratação; Pages continua protótipo |
+| Day12, RF-042/075–078, RN-060–063 | Q1–Q12 literais, seis pares, escala inteira 0–4, ausência distinta de zero, rascunho retomável em memória, pendências Qn, confirmação só completa | Dados somente fictícios; recarregar apaga tudo. Relógio relativo, sem definir fuso/corte diário real |
+| Pontos Day, RN-062 / CA-016 | +10 uma vez por dia concluído; todas as respostas zero também pontuam; editar/repetir não duplica; atalho antigo não pontua | Idempotência somente na instância do navegador; sem concorrência ou servidor |
+| Médias Day, RN-061/064 | Média dos pares e NG=soma/12; resultado após confirmação das 12; resultado atual oculto enquanto edição diverge do envio concluído | NG periódica exibida como fração exata; não é regra de arredondamento |
+| Faixas/devolutivas, RF-077, RN-065 | Faixas literais, seis médias, mensagem/ação literais quando há menor dimensão única; fonte/versão e IDs preservados em `daySpec` | PEN-01: sem classificação de NG que caia entre intervalos. PEN-02: empate deixa devolutiva pendente. Vínculos a conteúdos e revisão editorial final pendentes |
+| QA-P01, RF-015 / RN-031 | Predicado compartilhado verifica publicação da aula e do módulo; Continuar aula escolhe apenas disponível; `watch` rejeita indisponível; renderização verifica novamente | Bloqueio da simulação, sem alegar autorização de produção. Histórico e pontos preservados |
+| QA-P02, RF-034 | Home, Reuniões e próxima atividade do dashboard admin usam registros editados; título/data/hora aparecem também em gravações; edição gera aviso interno fictício, com antes/depois | Sem e-mail; salvar sem mudança não cria novo aviso. Público/leitura e janela de live continuam pendentes |
+| QA-P03, RF-010/012 | Campo `video` é salvo ao criar/editar e recuperado ao reabrir; HTTP/HTTPS validado; destino inválido não apaga aula anterior | Não abre nem incorpora a URL, não autentica provedor e não armazena após reload |
 
-## Decisões técnicas desta demonstração
+## Revisão do restante do escopo
 
-- Eventos de pontos ficam em memória, com chave por tipo e objeto; Day utiliza dia relativo do relógio demonstrativo. Recarregar reinicia tudo. Não há localStorage, cookies nem coleta de respostas.
-- A entrada de 90% é um cenário completo simulado; não há controle manual de saldo. O administrador só consulta a jornada do único aluno fictício.
-- Botões de submissão representam dados fictícios já completos. Textos das perguntas do inicial/30 dias/Day precisam de fonte; nenhum foi criado nesta entrega.
-- O contexto de Mediação declara live indisponível e janela de gravação aberta; não simula datas ou política administrativa desconhecida.
-- O verificador é recalculado com o conjunto de aulas obrigatórias publicadas. Não modela a vigência do II ou histórico temporal de elegibilidade após novas publicações, que depende da aplicação real.
+| Funcionalidade | Estado demonstrativo nesta branch |
+|---|---|
+| Home, logo R, azul-marinho/preto, aluno/admin, sem Conhecer | Preservados; `index.html` inalterado. CSS anterior mantido, com ajustes locais do Day |
+| Reconexão I e II | Jornada I e checklist/liberação fictícia II. Sem modalidade comercial inventada |
+| Aulas sem sequência | Mantidas. Referência de oito aulas explicitada; biblioteca usa exemplos reduzidos e admin adiciona quantidade livre |
+| Gestão de módulos/aulas | Criação, edição, rascunho/publicação e obrigatoriedade fictícia mantidas. Ordenação e exclusões não implementadas |
+| Live e gravação | Pontos por eventos distintos, sem comprovar presença externa ou telemetria real de 90% |
+| Mediação | Cenário explícito de início da gravação, sem pontos automáticos; janela/reabertura administrativa ainda pendente de implementação |
+| Exercícios | PENDENTES de implementação: três tipos, submissão/consulta e imutabilidade. Não confundir material PDF com exercício funcional |
+| Inicial e acompanhamento | Simulação de submissões completas separadas; 30 dias contados do inicial. Formulários/resultados aguardam fonte final PEN-07 |
+| Day | Formulário próprio, separado dos outros instrumentos. Histórico local simples; sem resumos semanais/mensais, editor ou leitura administrativa de respostas |
+| 3FM | BLOQUEADO por fonte integral ausente. Card separado, sem perguntas, cálculo, rascunhos ou resultados inventados |
+| Pontos/progresso/II | Saldo/histórico por evento e critérios cumulativos; 3FM não obrigatório; pagamento fictício separado. Sem acesso financeiro real |
+| Turmas on-line e vagas | Capacidade local e reserva demonstrativa após progressão II. Cancelamento/espera/relação pagamento-vaga pendentes; concorrência não comprovada |
+| Comunidade WhatsApp | Clique fictício pontua uma vez; não abre grupo ou prova ingresso; retirada externa não automatizada |
+| Vigência e descontos | Seis meses iniciais do I informados; configuração administrativa definitiva aguarda PEN-06. Sem escolher tipo/ordem de desconto, renovação ou vigência II |
+| Painel admin/presenças/e-mails/materiais | Simulações anteriores preservadas. Fonte da presença e relatórios reais continuam pendentes; presença manual não concede pontos |
+| Autenticação, pagamentos e infraestrutura | Fora desta implementação. Sem backend, segredos, contratação, serviços pagos ou mudanças no Pages |
+| Fora do escopo | Não foram adicionados presencial, chat/comunidade interna, Reconexão III, push ou streaming próprio |
 
-## Revisão e próximos passos
+## Decisões técnicas limitadas à demonstração
 
-1. Revisar a branch e as simulações; validar a representação dos dados fictícios, inclusive a marcação de obrigatoriedade dos exemplos.
-2. Fornecer o documento integral do 3FM e os textos dos demais questionários/Day para implementar formulários fiéis. Fórmulas, faixas e devolutivas não podem ser inferidas.
-3. Confirmar regras comerciais, cancelamento/realocação de reservas e operação externa do WhatsApp.
-4. Revisar o PR antes de merge em main. A publicação Pages existente só deve receber essas mudanças após aprovação.
+- O formulário Day mantém um registro por dia relativo, com respostas atuais e último envio completo, associado à versão da fonte. Não cria registros nos dias sem resposta. Editar atualiza o mesmo registro; não se pode editar dia passado pela interface.
+- As respostas parciais são atualizadas em memória ao mudar uma seleção; o botão Salvar parcial confirma essa operação. Navegar entre telas preserva o rascunho, recarregar o elimina. Use apenas respostas fictícias.
+- Resultado atual só aparece após concluir as 12 respostas; uma edição não submetida oculta a NG atual, sem remover pontos já concedidos. Os pares válidos podem ser calculados pelo motor sem imputar zero, mas a tela de resultado exige envio completo.
+- Faixas são comparadas por produtos inteiros com os limites escritos na fonte. Nenhum intervalo é ampliado. Para valores periódicos, a representação `43/12` conserva o valor exato. Isso não resolve PEN-01.
+- Na menor dimensão única, a mensagem vem do catálogo literal. Em empate, nenhuma alternativa do original é escolhida sem aprovação. Mensagens são educativas, não diagnósticas. Revisão editorial final e mapeamento para aulas continuam pendentes.
+- Nenhuma resposta Day é exibida no painel administrativo; autorização para leitura individual está pendente PEN-12.
 
-## Validação
+## Gate de entrega
 
-Resultados e limitações em [TESTES_PROTOTIPO.md](TESTES_PROTOTIPO.md). Os testes de simulação não constituem evidência de autenticação, pagamento, autorização, telemetria, privacidade ou persistência em produção.
+Esta revisão está preparada para reteste técnico/QA. Não é aceite do cliente nem prontidão para produção. Testes, limitações e apresentação local em [TESTES_PROTOTIPO.md](TESTES_PROTOTIPO.md). Antes de qualquer publicação oficial: revisão técnica/QA → aceite expresso do cliente por SHA → autorização posterior do responsável. PR #1 permanece draft.
