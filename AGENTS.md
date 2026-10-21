@@ -1,3 +1,11 @@
+## Rodada vigente V3 — 21/10/2026
+
+A instrução V3 fornecida nesta conversa prevalece nos pontos modificados. Branch feature/v3-acolhimento-3fm-pontos, base main b4654b89d24f1690486c981d49901da3768fdcc9 (PR #3 mesclado). Não reaproveitar autorização anterior de merge/publicação.
+
+Preservar textos literais 3FM em threeFMWelcome/threeFMIntroduction, botão COMEÇAR MINHA JORNADA e saudação. Sem fonte integral, início/retomada representam somente etapa visual; não inventar formulário, respostas ou confirmação de salvamento. Rascunho real segue bloqueado. Conclusão fictícia separada mantém 10 uma vez e gates.
+
+Saldo próprio no início do dashboard; meta 200; barra min/max sem arredondar elegibilidade; regras dos sete eventos com vídeo40% de trechos únicos e liveclique. Carga/erro são cenários explícitos e não alteram ledger. Ranking somente Admin. Novos documentos REQUISITOS/REGRAS_NEGOCIO/CRITERIOS_ACEITE/MODELO_DADOS são recortes aditivos, não transcrição integral do ZIP nem aprovação de arquitetura.
+
 ## Ajuste vigente após PR #2
 
 Ranking somente para Administrador, inclusive por roteamento e função de apresentação. A solicitação mais recente autoriza botão de conclusão fictícia na própria tela 3FM, separado como “Somente demonstração”, sem perguntas/resultados inventados. Compartilhar chave idempotente de 10 pontos com a fixture anterior; não contornar financeiro ou atraso Day. Branch desta rodada: `fix/ranking-admin-conclusao-demonstrativa`. Nova autorização necessária para merge/publicação.
