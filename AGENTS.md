@@ -1,3 +1,7 @@
+## Ajuste vigente após PR #2
+
+Ranking somente para Administrador, inclusive por roteamento e função de apresentação. A solicitação mais recente autoriza botão de conclusão fictícia na própria tela 3FM, separado como “Somente demonstração”, sem perguntas/resultados inventados. Compartilhar chave idempotente de 10 pontos com a fixture anterior; não contornar financeiro ou atraso Day. Branch desta rodada: `fix/ranking-admin-conclusao-demonstrativa`. Nova autorização necessária para merge/publicação.
+
 # Reconexão — instruções do protótipo V2
 
 Esta branch contém somente demonstração HTML/CSS/JavaScript. A instrução V2 fornecida pelo responsável nesta tarefa prevalece sobre trechos conflitantes dos pacotes anteriores. Requisitos de produção não estão integralmente fechados.
