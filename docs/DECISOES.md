@@ -1,3 +1,17 @@
+## Rodada V3 — 21/10/2026
+
+Fonte direta: instrução V3 integral nesta conversa, que reproduz os textos do cliente e as regras do aditivo V1.1. O DOCX original não foi anexado nesta rodada; não foi alegada inspeção independente da imagem ou de seu conteúdo. ZIP antigo não prevalece sobre as decisões recentes.
+
+- REV3-01/02: mensagem acolhedora e apresentação literal; COMEÇAR MINHA JORNADA.
+- REV3-03: saudação literal ao iniciar/retomar, sem releitura obrigatória.
+- REV3-04: correção/retomada de rascunho antes de finalizar é requisito; BLOQUEADO no instrumento enquanto faltar a fonte integral. A implementação retoma só a etapa visual, sem perguntas/respostas fabricadas.
+- REV3-05/06: próprio saldo no dashboard, meta200, barra limitada e saldo completo, sem ranking de terceiros.
+- REV3-07: regras dos sete eventos. Consumo de vídeo40% de trechos únicos válidos; live pontua clique. Textos90% antigos substituídos sem simular telemetria real.
+- Edição 3FM após conclusão permanece pendente; fixture única, sem reaplicação ou cálculos. Ranking segue Admin.
+- Nova branch a partir do merge PR #3; nenhuma autorização anterior vale para publicação desta rodada.
+
+Recortes aditivos de negócio adicionados, sem afirmar consolidação integral do ZIP nem arquitetura/DDL aprovados. Registro anterior preservado abaixo.
+
 ## Decisões posteriores ao PR #2
 
 - Origem: solicitação expressa do responsável nesta conversa. Ranking de engajamento visível **somente ao Administrador**. Substitui a pendência de perfil de visualização da V2; período, elegíveis, identidade e desempate permanecem pendentes.
