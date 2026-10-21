@@ -1,3 +1,11 @@
+## Ajuste posterior ao PR #2
+
+O ranking aparece exclusivamente em **Painel administrativo → Ranking de engajamento**. Menu, roteamento e função de apresentação do aluno não exibem os dados. Isso é restrição demonstrativa de frontend, não autorização real de servidor.
+
+Para testar sem o original 3FM: **Área do aluno → Somente demonstração → Concluir questionário — demonstração**. O botão marca somente a fixture técnica, concede 10 pontos fictícios uma vez e abre a visão geral (ou exige Day se já estiver atrasado). Não preenche nem calcula 40 respostas. Os controles técnicos anteriores continuam disponíveis e compartilham o mesmo evento idempotente.
+
+Esta nova rodada usa `fix/ranking-admin-conclusao-demonstrativa`, com PR draft, sem autorização automática de novo merge/publicação. Os trechos V2 abaixo são o registro da entrega anterior; este ajuste prevalece sobre a visibilidade indefinida do ranking e a exigência de acessar a fixture somente pela tela de cenários.
+
 # Reconexão — protótipo navegável V2
 
 Demonstração estática em HTML/CSS/JavaScript, com dados fictícios e logo/paleta fornecidas pelo cliente. Branch de revisão: feature/revisao-requisitos-acesso-day-ranking. O PR #1 foi mesclado na versão anterior; esta rodada exige outro PR draft e nova aprovação.

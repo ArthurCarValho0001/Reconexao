@@ -1,3 +1,16 @@
+## Correção posterior — ranking Admin e conclusão fictícia
+
+Base: main após PR #2, `31db5f0ae34beee0b15d72a0e0dc5e00e34e9dad`. Branch: `fix/ranking-admin-conclusao-demonstrativa`.
+
+| Antes | Agora |
+|---|---|
+| Ranking no menu/rota do aluno | Menu e rota do Administrador; chamada direta de apresentação pelo aluno não retorna tabela/dados |
+| Fixture 3FM acessível somente em controles técnicos | Botão também na tela obrigatória, em seção “Somente demonstração”, abrindo a experiência após conclusão |
+
+Pagamento, gate Day, prazo e histórico permanecem. O botão e a fixture anterior usam a mesma chave de crédito único. Não foram inventadas perguntas/resultados; logo, paleta e favicon intactos. Restrição de perfil é apenas demonstrativa no frontend.
+
+Registro da entrega V2 original abaixo; não representa testes nem autorização desta nova rodada.
+
 # Revisão V2 — acesso, Day e ranking
 
 Base: main em 1bd7f0050c55abfb49d8d318f9c0236b430f31b5. PR #1 CLOSED/MERGED, sem reabertura. Nenhum PR V2 aberto foi encontrado; criada feature/revisao-requisitos-acesso-day-ranking a partir da main. Esta entrega não altera main/Pages.
