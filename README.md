@@ -1,3 +1,24 @@
+# Reconexão — revisão demonstrativa V3 (21/10/2026)
+
+Branch: feature/v3-acolhimento-3fm-pontos. Base: b4654b89d24f1690486c981d49901da3768fdcc9. Esta rodada não autoriza merge/publicação.
+
+## O que mudou e como apresentar
+
+1. Entrar como aluno: ler apresentação acolhedora literal do cliente e usar COMEÇAR MINHA JORNADA. A etapa seguinte mostra saudação e local futuro do formulário. Ao sair e voltar, retoma a etapa sem releitura. A fonte integral continua ausente: nenhuma resposta foi solicitada/salva.
+2. Usar o controle separado Concluir questionário — demonstração: mesma fixture única de 10 pontos, sem resultado 3FM. Abre dashboard se financeiro/Day regulares.
+3. Logo após saudação, conferir Seus pontos: saldo fictício próprio do ledger, barra/meta200 e pontos restantes; Como ganhar pontos abre regras completas em lista acessível.
+4. Eventos fictícios de aula/live/gravação/Day/WhatsApp atualizam saldo/barra sem duplicar. Vídeos agora indicam condição de 40% de trechos únicos válidos, sem medição real. Clique live não comprova permanência externa. Exercícios e 3FM integral continuam sem formulário oficial.
+5. Nos controles técnicos, simular carga/erro de consulta de pontos e voltar à visão geral. Erro não exibe saldo zero ou liberação; Tentar novamente restaura consulta ao ledger em memória, sem API.
+6. Ranking comparativo permanece apenas em Painel administrativo → Ranking de engajamento; aluno só vê o próprio saldo.
+
+Só a etapa visual iniciada é retomada no 3FM. Rascunho de respostas, correção individual e falha de salvamento do instrumento aguardam a fonte oficial; não foram anunciados como implementados. Reload reinicia todos os dados. Edição após conclusão permanece pendente.
+
+42 testes automatizados aprovados; revisão visual desktop/mobile/teclado não executada (Chromium ausente). Ver docs/TESTES_PROTOTIPO.md. Logo/paleta/favicon e Day oficial preservados.
+
+[Requisitos V3](docs/REQUISITOS.md) · [Regras vigentes](docs/REGRAS_NEGOCIO.md) · [Aceite V3](docs/CRITERIOS_ACEITE.md) · [Modelo conceitual](docs/MODELO_DADOS.md)
+
+Os registros anteriores seguem abaixo como histórico; esta seção prevalece sobre regras de apresentação, vídeo e estado da rodada.
+
 ## Ajuste posterior ao PR #2
 
 O ranking aparece exclusivamente em **Painel administrativo → Ranking de engajamento**. Menu, roteamento e função de apresentação do aluno não exibem os dados. Isso é restrição demonstrativa de frontend, não autorização real de servidor.
