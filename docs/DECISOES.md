@@ -1,3 +1,11 @@
+## Decisões posteriores ao PR #2
+
+- Origem: solicitação expressa do responsável nesta conversa. Ranking de engajamento visível **somente ao Administrador**. Substitui a pendência de perfil de visualização da V2; período, elegíveis, identidade e desempate permanecem pendentes.
+- Autoriza-se botão “Concluir questionário — demonstração” na própria tela obrigatória 3FM, em seção técnica identificada. Não é recurso de produção, submissão real ou cálculo do instrumento. Registra a mesma fixture de 10 pontos uma vez; respeita pagamento e Day.
+- PR #2 mesclado em `31db5f0ae34beee0b15d72a0e0dc5e00e34e9dad` após autorização. Esta correção é outra rodada e não herda autorização de merge/publicação.
+
+O registro histórico V2 segue abaixo; decisões acima prevalecem nos pontos específicos.
+
 # Decisões vigentes — protótipo V2
 
 Origem: documento V2.0 fornecido integralmente pelo responsável na solicitação desta rodada, após reunião com o cliente. Regras funcionais aprovadas; implementação limitada a simulações. Base consultada: `main` em `1bd7f0050c55abfb49d8d318f9c0236b430f31b5`, merge do PR #1.
