@@ -1,3 +1,18 @@
+## Reteste da correção após PR #2
+
+Branch `fix/ranking-admin-conclusao-demonstrativa`, base `31db5f0ae34beee0b15d72a0e0dc5e00e34e9dad`; identificar a versão testada pelo head do PR desta correção. Arquivos enviados devem coincidir com os executados localmente.
+
+- `node --check app.js`: PASSOU.
+- `node --test tests/prototype.test.cjs`: PASSOU, 33/33 (30 regressões e três novos casos).
+- Ranking: menu/rota Admin disponíveis; aluno não recebe tabela/dados por menu, rota ou função; saldo e empates preservados.
+- Botão técnico 3FM: seção explícita, conclusão fictícia abre visão geral, crédito de 10 idempotente inclusive com fixture anterior; não altera prazo Day.
+- Negativos: pagamento pendente/perfil incorreto não concluem; Day vencido continua obrigatório após fixture 3FM.
+- Revisão visual/mobile/teclado: NÃO EXECUTADA nesta correção; sem evidência nova de navegador.
+
+Roteiro atualizado: entrar como aluno, clicar “Concluir questionário — demonstração” e conferir a visão geral; entrar como Admin e abrir “Ranking de engajamento”. Não há ranking na área do aluno. Não publicar sem nova autorização.
+
+As evidências e instruções V2 abaixo são históricas; este ajuste prevalece nos pontos modificados.
+
 # Testes V2 — evidências e roteiro
 
 Escopo: HTML/CSS/JavaScript com memória local, dados e respostas fictícios. Base 1bd7f0050c55abfb49d8d318f9c0236b430f31b5. A versão da entrega é o head do novo PR draft; registrar git rev-parse HEAD ao retestar, sem presumir que testes aprovam mudanças posteriores.
