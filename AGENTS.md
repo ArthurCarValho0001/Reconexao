@@ -1,0 +1,26 @@
+# Reconexão — instruções do protótipo V2
+
+Esta branch contém somente demonstração HTML/CSS/JavaScript. A instrução V2 fornecida pelo responsável nesta tarefa prevalece sobre trechos conflitantes dos pacotes anteriores. Requisitos de produção não estão integralmente fechados.
+
+## Fontes e regras vigentes
+
+Leia primeiro `docs/DECISOES.md`, `docs/REVISAO_PROTOTIPO.md` e `docs/TESTES_PROTOTIPO.md`. A fonte educativa Day é `Reconexao_Day_Especificacao_Funcional_V1.pdf`: os 12 enunciados, seis dimensões, escala 0–4 e catálogo literal estão preservados em `daySpec`, em `app.js`. A V2 modifica obrigatoriedade/periodicidade, não as fórmulas.
+
+- Usar Aluno/Administrador. Preservar logo, favicon e paleta azul profundo, verde-petróleo e verde-folha enviados pelo cliente.
+- Pagamento único. Acesso enquanto o programa existir, com seis meses mínimos garantidos desde a contratação; não expirar automaticamente aos seis meses nem criar renovação compulsória.
+- Estado financeiro/liberação → 3FM obrigatório → Day atrasado → tela solicitada. Todos os atalhos devem respeitar o mesmo bloqueio demonstrativo.
+- 3FM: 40 perguntas, cinco dimensões, quatro pilares, uma conclusão e 10 pontos uma vez. Fonte integral ausente: somente tela pendente e fixture técnica explicitamente identificada. Não inventar perguntas ou resultados.
+- Day é o inicial e acompanhamento recorrente. Primeiro limite = liberação +30 dias; seguintes = última conclusão válida +30. Parcial não renova nem pontua. Uma concessão de 10 por conclusão diária, inclusive doze respostas zero.
+- Dias relativos: dia limite permitido, seguinte atrasado, apenas como proposta de demonstração. Fuso/corte diário reais continuam pendentes.
+- Reconexão II: somente saldo >=200, sem pagamento adicional ou critérios cumulativos antigos. Bloqueio pedagógico não apaga elegibilidade/pontos.
+- Ranking: apenas pontos fictícios de engajamento, empates explícitos, sem notas/reflexões ou regra pública de exposição presumida.
+- Preservar atividades, eventos idempotentes, histórico, aulas sem sequência, turmas exclusivamente on-line e correções QA-P01/P02/P03.
+- Ajuda/privacidade, saída e controles técnicos devem permanecer acessíveis. Não aplicar bloqueio pedagógico ao Administrador.
+
+## Execução e aprovação
+
+Inspecionar estado remoto antes de escrever. O PR #1 está mesclado; não reabrir. Esta rodada usa `feature/revisao-requisitos-acesso-day-ranking`. Apresentar arquivos, dependências e critérios antes de editar. Sem novas bibliotecas, serviços pagos, backend, credenciais ou dados reais.
+
+Executar `node --check app.js` e `node --test tests/prototype.test.cjs`; registrar também revisão visual/teclado executada ou indisponibilidade. Testes em VM não validam segurança ou navegador real.
+
+Abrir/atualizar PR draft. Não mesclar, publicar, mudar Pages ou criar preview externo. Autorização de merge do PR #1 não se estende à V2. Revisão técnica/QA e aceite do cliente sobre SHA precedem nova autorização do responsável.
