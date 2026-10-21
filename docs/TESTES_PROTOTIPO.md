@@ -1,3 +1,32 @@
+# Evidências V3 — 21/10/2026
+
+Base b4654b89d24f1690486c981d49901da3768fdcc9; branch feature/v3-acolhimento-3fm-pontos. Versão testada: conteúdo dos arquivos enviado no head do PR desta rodada; conferir SHA no PR. Não herdar resultados de versão posterior.
+
+- Antes da mudança: 33/33 da base passaram.
+- node --check app.js: PASSOU.
+- node --test tests/prototype.test.cjs: PASSOU, 42/42 (33 regressões +9 novos testes).
+- git diff --check dos arquivos desta rodada: PASSOU.
+- Catálogo/cálculos Day e logo/index/assets preservados.
+- Tentativa Playwright chromium.launch: BLOQUEADA por executável ausente em chromium_headless_shell-1234. Desktop/mobile/teclado NÃO EXECUTADOS; sem screenshots. CSS responsivo, summary nativo e ARIA conferidos só por código.
+
+| Critério | Esperado/observado | Resultado |
+|---|---|---|
+| REV3-CA01/02 | Apresentação acolhedora, 40 perguntas/cinco dimensões/quatro pilares, convite sem remover gate | PASSOU em VM/inspeção literal |
+| REV3-CA03/05 | Começar mostra saudação, retorno preserva etapa; nenhum input/formulário fabricado; fixture separada | PASSOU na prévia; formulário bloqueado |
+| REV3-CA04 | Rascunho de respostas/correção e falha de salvamento | NÃO IMPLEMENTADO/TESTADO: fonte integral ausente |
+| REV3-CA06/07/10 | Bloco antes de conteúdo; 0/10/100/199/200/230 geram0/5/50/99,5/100/100%;199 falta1,230 mantém saldo | PASSOU |
+| REV3-CA08/09 | Mesmo ledger no bloco/extrato/II; evento repetido não duplica | PASSOU |
+| REV3-CA11 | Sete eventos, vídeo40%únicos/liveclique; sem bônusInicial/30dias, explicação nativa expansível | PASSOU |
+| REV3-CA12 | Bloco próprio sem nomes/saldos de outros alunos; ranking Admin preservado | PASSOU em VM; segurança/isolamento reais NÃO TESTADOS |
+| REV3-CA13 | Erro/carga sem bar/zero/liberação falsa; retentar mantém230 | PASSOU, consulta local fictícia |
+| REV3-CA14 | 3FM e Day impedem dashboard;230/pontos e elegibilidade preservados | PASSOU |
+| REV3-CA15 | Mobile/desktop/teclado em navegador | NÃO EXECUTADO (Chromium ausente) |
+| REV3-CA16 | Branch/PRdraft sem merge/publicação | Conferir PR desta rodada; aguardar cliente/responsável |
+
+Roteiro manual pendente: em1440px e390px, conferir saudação, leitura/scroll do texto, botão de começo/retomada e fixture; no dashboard conferir ordem do bloco, expansão/fecho por Tab/Enter/Espaço, foco visível, progressbar/texto e estados de consulta. Confirmar gate Day, nenhuma exposição de ranking ao aluno e regressões Admin.
+
+Os registros anteriores seguem históricos abaixo; não representam revisão visual ou segurança real desta V3.
+
 ## Reteste da correção após PR #2
 
 Branch `fix/ranking-admin-conclusao-demonstrativa`, base `31db5f0ae34beee0b15d72a0e0dc5e00e34e9dad`; identificar a versão testada pelo head do PR desta correção. Arquivos enviados devem coincidir com os executados localmente.
