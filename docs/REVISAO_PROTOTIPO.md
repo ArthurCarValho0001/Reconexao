@@ -1,3 +1,25 @@
+# Revisão V3 — acolhimento 3FM e saldo próprio
+
+Base main: b4654b89d24f1690486c981d49901da3768fdcc9; PRs anteriores mesclados, nenhum PR aberto encontrado. Branch feature/v3-acolhimento-3fm-pontos.
+
+| Antes | Nesta revisão |
+|---|---|
+| Tela 3FM concentrava avisos técnicos | Texto acolhedor/apresentação literal, botão do cliente; avisos longos em detalhes do apresentador |
+| Sem etapa começar/retomar | Saudação e retomada de etapa visual; sem perguntas ou rascunho inventados |
+| Saldo só na jornada/extrato | Saldo próprio também após saudação do dashboard, antes dos conteúdos |
+| Sem barra da meta no dashboard | Barra0..100%, meta200, faltantes e liberação textual, sem arredondar199 |
+| Explicação de pontos incompleta e vídeo90% | Sete regras completas, 40% de trechos únicos e clique live; vídeo continua botão fictício |
+| Sem estados de consulta no bloco | Carga/erro/retentar explicitamente demonstrativos, sem substituir falha por zero |
+| Ranking Admin | Preservado; nenhum ranking/saldo de outros alunos no bloco próprio |
+
+Documentos acrescentados como recortes V3: REQUISITOS, REGRAS_NEGOCIO, CRITERIOS_ACEITE, MODELO_DADOS. Regras V2 e QA anteriores preservadas; logo/index/assets não alterados, CSS apenas complementar.
+
+Bloqueios: fonte integral 3FM impede formulário, rascunho de respostas/correção/salvamento; edição pós-conclusão pendente. Etapa visual não é rascunho. Sem integração real ou backend. Exercício sem conteúdo permanece regra informativa, não formulário inventado.
+
+42 testes VM passaram, incluindo fronteiras e regressões. Tentativa de navegador falhou por Chromium ausente; desktop/mobile/teclado NÃO EXECUTADOS. Revisão por cliente, QA e nova autorização exigidas. Sem merge, Pages ou preview externo.
+
+Registro histórico abaixo não aprova a V3.
+
 ## Correção posterior — ranking Admin e conclusão fictícia
 
 Base: main após PR #2, `31db5f0ae34beee0b15d72a0e0dc5e00e34e9dad`. Branch: `fix/ranking-admin-conclusao-demonstrativa`.
