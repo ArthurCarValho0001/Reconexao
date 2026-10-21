@@ -1,72 +1,67 @@
-# Evidências de teste — revisão Day12 e QA
+# Testes V2 — evidências e roteiro
 
-Data: 18/10/2026. Runtime: Node.js v24.19.0. Branch `feature/atualizacao-prototipo`, PR #1 em rascunho. A versão remota exata desta entrega é o head do PR; obter `git rev-parse HEAD` ao retestar e associar esse SHA ao parecer. Nenhum teste autoriza publicação.
+Escopo: HTML/CSS/JavaScript com memória local, dados e respostas fictícios. Base 1bd7f0050c55abfb49d8d318f9c0236b430f31b5. A versão da entrega é o head do novo PR draft; registrar git rev-parse HEAD ao retestar, sem presumir que testes aprovam mudanças posteriores.
 
-## Execuções realizadas
+## Execuções
 
-1. Antes de editar, os 11 testes existentes no head `1593d88ba13329e0d522b728f1e70e294f2b0a5f` passaram. Não comprovavam ausência dos defeitos relatados pelo QA.
-2. Nesta revisão, `node --check app.js`: PASSOU.
-3. `node --test tests/prototype.test.cjs`: PASSOU, **19 testes**, zero falhas. Os dois cenários antigos que usavam o evento Day de cinco respostas foram adaptados para submissão das 12 entradas.
-4. `git diff --check`: PASSOU.
-5. Tentativa de iniciar Chromium com Playwright: BLOQUEADA por executável ausente. Não foi feita revisão visual nem inspeção real em desktop/mobile/teclado. O download do navegador já havia falhado na revisão anterior; não há evidência visual para esta versão.
+- Antes da edição: 19/19 testes da main passaram. Cobriam regras anteriores, algumas agora substituídas.
+- node --check app.js: PASSOU.
+- node --test tests/prototype.test.cjs: PASSOU, 30/30.
+- A suíte usa node:vm, funções/handlers reais e DOM/FormData mínimos. Não é navegador, segurança de servidor, pagamento ou teste de concorrência.
+- Tentativa de iniciar Chromium/Playwright: BLOQUEADA por executável ausente. Não há navegador instalado, captura visual ou revisão desktop/mobile/teclado executada.
+- index.html e asset da marca não são modificados nesta revisão; referência de favicon é verificada na suíte. Estilos anteriores preservados, acrescidos apenas controles/prazo/comunicado.
 
-Os testes usam `node:vm` e DOM/FormData mínimos para executar as funções e o handler de clique reais do protótipo. Não simulam um navegador completo. O script histórico do QA espera reproduzir os defeitos; seus resultados antigos não foram sobrescritos. As regressões desta entrega verificam o comportamento corrigido com asserções próprias.
+## Aceite por cenário
 
-## Cobertura executada
-
-| Grupo | Entrada/ação e esperado | Resultado |
+| Critério | Esperado e observado na simulação | Resultado |
 |---|---|---|
-| Day oficial | 12 enunciados no catálogo, seis dimensões, escala oficial; extremos 0 e 4 | PASSOU: NG=0/4, pares correspondentes, +10 uma vez |
-| Parcial | 11 respostas zero, falta Q12; salvar/navegar/retomar | PASSOU: zero preservado, Q12 pendente, NG/D6 ausentes e sem pontos até concluir |
-| Validação | -1, 5, 1,5, NaN, undefined, booleano, espaço, valor malformado; atalho Day antigo | PASSOU: rejeitados; não convertidos em zero nem concedidos pontos |
-| Edição/reenvio | Concluir, limpar resposta, preencher e reenviar no mesmo dia; avançar sem responder | PASSOU: NG atual ocultada durante edição; sem segunda concessão ou zero em dia sem registro |
-| Médias e limites | Q1=2/Q2=4; soma=43; empate de dimensões | PASSOU: D1=3; NG exata 43/12 e classificação pendente; empate sem desempate inventado |
-| QA-P01 | Despublicar aula e módulo; usar Home/handler watch/renderização já selecionada | PASSOU: não apresenta vídeo; preserva conclusão e pontos; sem atalho quando não há aulas disponíveis |
-| QA-P02 | Salvar reunião com título/data/hora novos; consultar Home, Reuniões, admin, gravação e avisos; repetir save igual | PASSOU: dados consistentes, aviso com antes/depois; sem aviso duplicado quando nada muda |
-| QA-P03 | Criar/editar/reabrir aula com URL própria; tentar javascript: | PASSOU: URL recuperada corretamente e escapada no formulário; inválida não apaga aula anterior |
-| Eventos anteriores | Aula, live, gravação, WhatsApp e Mediação | PASSOU: +10 por evento sem duplicação; Mediação não concede 90% automaticamente |
-| Questionários/II | Prazo inicial/30 dias, 199/200, pré-requisitos cumulativos, pagamento separado e 3FM não obrigatório | PASSOU na simulação |
-| Fluxo completo | Eventos visíveis permitem 200 pontos com cinco conclusões Day12 e demais atividades; pagamento II | PASSOU: liberação fictícia alcançável sem alterar saldo manualmente |
-| Rotas aluno/admin | Gerar HTML das rotas, incluindo Day; escape de texto e ausência de Conhecer | PASSOU em VM; não equivale a teste visual ou acessibilidade |
+| RV2-CA01 | Tratamento Aluno; nenhuma função nova usa membro como público; variáveis members não foram renomeadas sem motivo | Conferido por inspeção e teste textual |
+| RV2-CA02/03 | 3FM pendente força tela obrigatória em aulas, Day, II, ranking e atalhos; não há perguntas/resultados inventados; ajuda/saída funcionam | PASSOU em VM |
+| RV2-CA04/05 | Fixture completa deixa navegar dentro do prazo; crédito de 10 único; completar 3FM no dia 22 mantém limite Day 30 | PASSOU |
+| Financeiro | Pagamento pendente/liberação nula precedem gate 3FM; liberar no dia 8 preserva contratação dia 0 e produz limite 38 | PASSOU |
+| RV2-CA06/07 | Day dia 8 →38; nova conclusão dia 15 →45; rascunho dia 20 não altera | PASSOU |
+| RV2-CA08/09 | 11/12 não conclui/pontua/renova; 12 zeros concluem e concedem 10 uma vez | PASSOU |
+| RV2-CA10/11 | Dia limite 45 permitido; dia 46 comunicado/gate; conclusão nesse dia libera e muda limite para 76 | PASSOU |
+| RV2-CA12 | Salvar parcial/abrir aviso/atalho não libera nem renova; crédito de WhatsApp não é concedido durante bloqueio | PASSOU |
+| RV2-CA13/14 | Reenvio/edição da mesma conclusão não duplica; troca de cenário/retorno à entrada preservam prazo; envio futuro sem novo registro não fabrica conclusão | PASSOU |
+| RV2-CA15/16 | 199 bloqueia II; 200 libera sem extras mesmo com atividades incompletas; atraso posterior conserva saldo/elegibilidade, bloqueando apenas navegação | PASSOU |
+| RV2-CA17 | Dia 240 não revoga contrato; Day regularizado permite acesso sem renovar/pagar II | PASSOU |
+| RV2-CA18/19 | Ranking usa saldo do extrato, repetição não infla, empate explícito e nenhuma resposta/NG/dimensão/resultado individual | PASSOU |
+| RV2-CA20 | Dois instrumentos; flags/eventos Inicial/30 dias/pagamento II removidos; catálogo Day permanece distinto do 3FM | PASSOU |
+| RV2-CA21 | Aula/módulo despublicado bloqueado; agenda e aviso refletem edição; URL preservada/reaberta; esquema inválido não apaga aula | PASSOU |
+| RV2-CA22 | Logo/favicon/paleta preservados; Home sem Conhecer ou ranking público; sem presencial/III/chat | Código/referências conferidos; visual pendente |
+| RV2-CA23 | Novo gate, prazo, Day e ranking em desktop/mobile/teclado | NÃO EXECUTADO, navegador indisponível |
+| RV2-CA24 | Branch separada e PR draft; sem mudança main/Pages, integração ou dado real | Conferir versão/estado do PR na entrega |
 
-## Pendências de validação
+Os extremos Day 0/4, par 2+4=3, NG exata 43/12, empate sem decisão inventada, campos inválidos, rascunho retomável, idempotência dos eventos e jornada alcançável de 200 também permanecem na suíte. A jornada usa fixture explícita 3FM e eventos elegíveis; não há concessão manual de saldo no produto. Fixtures de 199/200 nos testes isolam somente o limite.
 
-- CA-080: desktop/mobile, seleção real, foco, teclado, contraste, rolagem e layout: NÃO EXECUTADOS, navegador indisponível. Nenhuma captura visual entregue.
-- PEN-01/02: classificação nas lacunas dos intervalos, arredondamento, desempate/semelhança, links de conteúdo, períodos dos resumos: BLOQUEADOS pelas decisões correspondentes. Não há resultado esperado inventado.
-- Fuso/virada diária real, edição retroativa e concorrência Day: NÃO VALIDADOS. Relógio relativo e memória local são ferramentas de demonstração, não autoridade de produção.
-- Sem backend: autorização/IDOR, privacidade real, sessões, pagamento, expiração, concorrência de vagas, telemetria 90% e persistência NÃO VALIDADOS.
-- 3FM continua BLOQUEADO por fonte integral. Inicial/30 dias ainda são submissões fictícias, não formulários homologados. Exercícios e administração de descontos/vigências continuam pendentes de implementação/definição.
+## Limitações
 
-## Roteiro manual para QA e cliente
+3FM integral, respostas parciais desse instrumento e seus resultados continuam BLOQUEADOS. A fixture não aprova aplicação/correção de 40 respostas. Calendário e data do servidor continuam ausentes; o relógio relativo não valida virada diária real.
 
-Executar primeiro com revisor técnico/QA, em 1440px e 390px e com teclado. Registrar navegador, largura, SHA, entradas e resultado esperado/obtido.
+Fronteiras/classificação e desempate Day, ranking público/período, encerramento/garantia, reservas/operação/dados continuam pendentes. Backend, autenticação, IDOR, sessão única, pagamento real, acesso por estorno, telemetria, persistência e concorrência não foram implementados ou testados.
 
-1. Home: conferir logo fornecida, azul profundo/verde-petróleo/verde-folha e entradas Aluno/Admin, sem Conhecer. Em mobile, verificar menu horizontal e aviso de demonstração visível.
-2. Admin → Conteúdos: despublicar aula selecionada na Home e depois seu módulo. Como aluno, tentar Continuar aula e navegação normal. Reabrir o módulo após republicar; os pontos já concedidos devem permanecer, sem duplicação.
-3. Admin → Reuniões: mudar título, data e hora. Conferir agenda e Home do aluno e novo aviso. Salvar novamente sem mudança: nenhum aviso adicional. Confirmar que nenhum e-mail real foi enviado.
-4. Admin → aula: informar `https://video.example.test/revisao`, salvar e reabrir. Conferir o mesmo valor; nenhum vídeo externo deve ser requisitado pelo protótipo.
-5. Day: responder somente Q1–Q11 com zeros; salvar parcial; ir a Meus módulos e voltar. Q12 continua pendente, zero não vira vazio, sem NG/pontos. Completar Q12 e concluir: +10. Editar/reconcluir no mesmo dia: não duplica.
-6. Day: preencher todas com 4, exceto Q1=0 e Q2=3. NG deve mostrar 43/12 e classificação geral pendente. Todas iguais a 2 produzem empate e aviso de devolutiva pendente. Sem diagnóstico, ranking ou punição.
-7. Avançar dois dias em Questionários sem responder: não criar registro zero no dia pulado. Voltar ao Day e concluir outro registro: novo evento de +10. Recarregar apaga todos os dados demonstrativos.
-8. Conferir inicial, 30 dias e 3FM separados. Concluir aulas sem sequência, live, gravações e Mediação; verificar ledger e checklist II. Reserva respeita capacidade local; cancelamento permanece pendente.
-9. Teclado: navegar por Tab/Shift+Tab, alterar escala, acionar salvar/concluir, conferir foco visível e texto de pendências anunciado. Revisar também os modais administrativos existentes. Qualquer falha deve ser registrada, sem presumir aceite.
+## Roteiro de apresentação após reteste técnico/QA
 
-## Apresentação sem alterar Pages
+Em cópia local limpa da branch, registrar o SHA, executar a suíte e servir somente localmente:
 
-Depois do reteste técnico/QA, obtenha uma cópia limpa da branch no computador do apresentador:
-
-```sh
-git clone --branch feature/atualizacao-prototipo --single-branch https://github.com/ArthurCarValho0001/Reconexao.git reconexao-revisao
-cd reconexao-revisao
+~~~sh
+git clone --branch feature/revisao-requisitos-acesso-day-ranking --single-branch https://github.com/ArthurCarValho0001/Reconexao.git reconexao-v2
+cd reconexao-v2
 git rev-parse HEAD
 node --test tests/prototype.test.cjs
 python -m http.server 8000 --bind 127.0.0.1
-```
+~~~
 
-Abrir `http://127.0.0.1:8000` e compartilhar a tela. Alternativa: baixar o ZIP da branch e servir sua pasta localmente. Isso não modifica o Pages oficial nem cria serviço externo. Use somente dados fictícios, informe limitações e associe o aceite do cliente ao SHA apresentado.
+Abrir http://127.0.0.1:8000 e compartilhar a tela; não trocar origem do Pages.
 
-O responsável autoriza merge/publicação somente após revisão técnica/QA e aceite expresso do cliente. Manter PR #1 em rascunho; não trocar a origem do Pages ou criar prévia externa sem autorização específica.
+1. Entrar como aluno: conferir gate 3FM sem botão normal de pular; testar menu, atalhos, ajuda e saída.
+2. Abrir controles técnicos, mostrar que é fixture de apresentador e selecionar conclusão fictícia 3FM. Conferir 10 pontos uma única vez, sem resultados inventados.
+3. Concluir Day antecipadamente, avançar relógio, salvar rascunho, sair/reentrar e verificar que somente conclusão válida renova prazo.
+4. Ultrapassar o limite: conferir comunicado e bloqueio inclusive em II/ranking; concluir 12 zeros e verificar liberação, histórico, pontos e novo prazo.
+5. Alcançar 200 por eventos; verificar II sem segunda cobrança e ranking coerente com extrato/empates. Não exibir reflexões.
+6. Retestar Admin → despublicação de aula/módulo, edição de reunião/aviso e URL. Administração deve continuar acessível mesmo com aluno pendente.
+7. Em 1440px e 390px, revisar rolagem, recortes, modais, foco Tab/Shift+Tab, seleção Day, comunicado anunciado e acesso aos controles/saída. Registrar resultado real; não herdar PASSOU da VM.
+8. Recarregar: todos os dados locais voltam ao cenário inicial anunciado.
 
-## Reteste da atualização de marca
-
-Após aplicar logo/paleta/favicon: `node --check app.js`, `node --test tests/prototype.test.cjs` (19/19) e `git diff --check` passaram. O símbolo reutiliza o bitmap original; identidade não foi redesenhada. A configuração do favicon aponta para o asset local. Favicon em navegadores, corte do símbolo, alinhamento, responsividade e foco ainda requerem revisão visual real; não foram aprovados por estes testes.
+Aguardar reteste técnico/QA e aceite expresso do cliente sobre o SHA. Nova autorização é obrigatória para merge/publicação. Não reabrir PR #1, criar preview externo ou contratar serviços nesta etapa.
