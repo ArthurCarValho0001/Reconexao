@@ -1,3 +1,13 @@
+## Aditivo — exemplos fictícios pré-carregados
+
+Solicitação do responsável: permitir que o cliente veja a consulta administrativa sem preencher o formulário antes. Base: main após merge do PR #5, f5d63a2c43b5d0ce9e29a81374968ae971b46611. Nenhum PR aberto encontrado; nova branch feature/relatos-ficticios-admin.
+
+Alteração restrita: três registros sintéticos iniciais (Major e Alunos ilustrativos 01/02), com marcadores explícitos, datas demonstrativas, textos de tamanhos diferentes e quebras. Admin diferencia exemplos pré-carregados dos envios da visita. IDs novos começam após os três exemplos. Renderizar/navegar não repõe nem duplica registros; reload restaura a demonstração.
+
+Sem exibição ao aluno, pontos, respostas ou novos comportamentos de negócio. Mantidos envio, falha/retentativa e estado vazio (cenário isolado nos testes). Sem CSS, logo ou integração novos.
+
+Arquivos: app.js, tests/prototype.test.cjs, README.md e docs/REVISAO_PROTOTIPO.md / TESTES_PROTOTIPO.md. 58 testes passaram; visual não executado nesta alteração. Sem merge ou publicação.
+
 # Revisão V4 — relato opcional na Home
 
 Base main 1fbc32698c45bd6ef669ff36a07b5da207269660; branch feature/v4-relato-aluno. PR #4 já mesclado; nenhum PR aberto encontrado. Fonte: instrução V4 integral desta conversa.
