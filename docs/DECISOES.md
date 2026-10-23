@@ -1,3 +1,11 @@
+## Rodada V4 — 23/10/2026
+
+Fonte: instrução integral Relato do aluno na Home fornecida nesta conversa. REL-RN01 a REL-RN08 aprovadas: relato opcional/identificado, máximo de 1.000, consulta só Admin/somente leitura, aluno sem histórico, sem pontos. Regras anteriores continuam.
+
+Decisões técnicas da demonstração: contar grafemas Unicode com Intl.Segmenter, preservar texto exato, sem maxlength UTF-16/truncamento; falha preserva draft, sending protege tentativa; autor Major capturado da fixture, sem campo de nome; dados exclusivamente em memória. InstanteISO local e fuso America/Sao_Paulo explícitos, sem alegar relógio de servidor. Contrato real de contagem/Unicode, autorização, retenção/exclusão e logs seguros pendentes.
+
+Main inspecionada1fbc32698c45bd6ef669ff36a07b5da207269660 (PR #4 mesclado); nenhum PR aberto encontrado. Branch feature/v4-relato-aluno. Novos testes/evidências não são aprovação de produção. Sem merge/publicação nem herança de autorização passada.
+
 ## Rodada V3 — 21/10/2026
 
 Fonte direta: instrução V3 integral nesta conversa, que reproduz os textos do cliente e as regras do aditivo V1.1. O DOCX original não foi anexado nesta rodada; não foi alegada inspeção independente da imagem ou de seu conteúdo. ZIP antigo não prevalece sobre as decisões recentes.
