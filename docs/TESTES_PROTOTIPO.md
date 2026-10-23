@@ -1,3 +1,17 @@
+## Reteste — exemplos fictícios pré-carregados
+
+Base f5d63a2c43b5d0ce9e29a81374968ae971b46611; branch feature/relatos-ficticios-admin. SHA exato da revisão registrado no PR.
+
+- Antes: 55 testes passaram.
+- Depois: node --check app.js e node --test tests/prototype.test.cjs passaram, 58/58.
+- Três exemplos sintéticos: todos dentro de 1.000 grafemas; autor, timestamp e identificação fictícia presentes na consulta Admin.
+- Sem exposição no aluno/visitante, pontuação ou duplicação ao renderizar/navegar.
+- Envio posterior acrescenta quarto registro com ID distinto; reload restaura os três exemplos.
+- Testes anteriores de formulário/erro/estado vazio usam explicitamente a fixture sem registros, via parâmetro emptyReports do harness. Novos testes exercitam o estado inicial real com os três exemplos; o teste de reload foi atualizado para esse estado.
+- Revisão visual desktop/mobile/teclado NÃO EXECUTADA nesta alteração. Resultados em VM não comprovam autorização real de servidor.
+
+Roteiro: abrir diretamente Painel administrativo → Relatos dos alunos. Conferir três cartões “Exemplo fictício pré-carregado”, leitura integral e fuso. Enviar exemplo pela área do aluno e retornar ao Admin para conferir registro adicional “Envio simulado nesta visita”. Não usar textos reais. Nova autorização necessária para merge/publicação.
+
 # Evidências V4 — 23/10/2026
 
 Base: 1fbc32698c45bd6ef669ff36a07b5da207269660; branch feature/v4-relato-aluno. Versão testada é o conteúdo conferido contra o head do PR V4; SHA exato registrado no PR. Não herdar evidências para mudanças posteriores.
