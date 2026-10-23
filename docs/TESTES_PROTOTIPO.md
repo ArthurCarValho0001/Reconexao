@@ -1,3 +1,36 @@
+# Evidências V4 — 23/10/2026
+
+Base: 1fbc32698c45bd6ef669ff36a07b5da207269660; branch feature/v4-relato-aluno. Versão testada é o conteúdo conferido contra o head do PR V4; SHA exato registrado no PR. Não herdar evidências para mudanças posteriores.
+
+- Base: 42/42 passaram antes da edição.
+- node --check app.js: PASSOU.
+- node --test tests/prototype.test.cjs: PASSOU, 55/55 (42 regressões + 13 testes REL).
+- Harness VM/DOM mínimo: timers controlados para cenários e um teste com callback real após 800 ms. Não é navegador.
+- Catálogo Day/textos 3FM/identidade preservados; conferência antes do envio.
+- Tentativa Playwright.chromium.launch BLOQUEADA por chromium_headless_shell-1234 ausente. Desktop/mobile/teclado NÃO EXECUTADOS; sem screenshots.
+
+| Critérios | Observado na simulação | Resultado |
+|---|---|---|
+| REL-CA01/02 | Form após o saldo, ausente no público; branco rejeitado | PASSOU |
+| REL-CA03/04 | 1.000 aceito; colagem 1.001 mantida sem truncar ou enviar | PASSOU |
+| REL-CA05 | á e a+acento 1; família/tom de pele/bandeira 1 cada; 1.000 famílias aceitas; quebras intactas | PASSOU |
+| REL-CA06/10 | Major / major-demo e texto correspondentes no Admin; ISO/fuso São Paulo | PASSOU |
+| REL-CA07 | Cenário falha→zero registros, preserva texto→retenta com sucesso | PASSOU |
+| REL-CA08 | Reenvio durante sending e callback repetido não duplicam; posterior novo relato permitido | PASSOU |
+| REL-CA09/12 | Sem conteúdo/histórico enviado na telaAluno;rota/funçãoAdmin verificam perfil | PASSOU em frontend, não autorização real |
+| REL-CA11 | Ledger/barra/II/ranking/prazo Day iguais antes e depois | PASSOU |
+| REL-CA13 | Script/HTML e fechamento de textarea escapados, texto integral em Admin | PASSOU em VM, sem execução real de browser |
+| REL-CA14 | Celular/teclado/rolagem/foco | NÃO EXECUTADO, navegador indisponível |
+| REL-CA15 | Fixtures só fictícias;avisos;nenhum storage/rede/log adicionado para relatos | Inspeção de código |
+
+Também testados: gates 3FM/Day impedem formulário/envio; draft permanece ao navegar antes de enviar; troca Aluno → Admin durante processamento conserva autor; vazio Admin e reload reinicia. Regressões QA-P01/P02/P03 e V3 mantidas.
+
+Roteiro manual pendente: executar branch local (README), registrar SHA. Após fixture 3FM, preencher exemplo e enviar; mudarAdmin → Relatos e conferir mesmo conteúdo. Provocar falha nos controles/retentar. Em 1440px e 390px testarTab/Shift+Tab,textarea/contador/feedback,readonly e botões, 1.000 caracteres completos/quebras, quebra de texto longo sem espaços e assinatura de fuso. Confirmar que ignorar bloco não bloqueia aulas e que pontos/Day ficam intactos. Não usar relatos reais.
+
+Autenticação, isolamento entre alunos, acesso operacional, validação no servidor, retenção/exclusão, timestamp confiável, persistência e logs sem corpo NÃO IMPLEMENTADOS/TESTADOS. Aprovação do cliente e nova autorização antes de merge/Pages.
+
+Histórico anterior preservado abaixo, sem aprovação implícita V4.
+
 # Evidências V3 — 21/10/2026
 
 Base b4654b89d24f1690486c981d49901da3768fdcc9; branch feature/v3-acolhimento-3fm-pontos. Versão testada: conteúdo dos arquivos enviado no head do PR desta rodada; conferir SHA no PR. Não herdar resultados de versão posterior.
