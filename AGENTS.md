@@ -1,3 +1,11 @@
+## Rodada vigente V4 — relato opcional (23/10/2026)
+
+Instrução V4 integral do responsável nesta conversa. Branch feature/v4-relato-aluno, base main 1fbc32698c45bd6ef669ff36a07b5da207269660. Autorizações anteriores não valem para merge/publicação desta rodada.
+
+Relato apenas na Home do aluno com navegação liberada, opcional, até 1.000 grafemas visíveis (Intl.Segmenter, sem truncamento silencioso); identificado pela fixture Major, sem nome manual. Admin apenas lê; aluno não consulta enviados. Nada de resposta/chat, análise, exportação ou pontos. Manter saldo/barra, ranking Admin, Day e 3FM.
+
+Somente dados fictícios e memória desta visita, sem storage, rede ou logs do relato. Ocultar tela não implementa privacidade. Estado sending bloqueia duplicidade acidental; falha preserva texto. Testar limites/Unicode/HTML e ausência de efeitos em pontos/Day. Documentar contagem como proposta de contrato, fuso demonstrativo explícito e requisitos de servidor ainda não implementados. Nova revisão draft; nunca publicar automaticamente.
+
 ## Rodada vigente V3 — 21/10/2026
 
 A instrução V3 fornecida nesta conversa prevalece nos pontos modificados. Branch feature/v3-acolhimento-3fm-pontos, base main b4654b89d24f1690486c981d49901da3768fdcc9 (PR #3 mesclado). Não reaproveitar autorização anterior de merge/publicação.

@@ -1,3 +1,18 @@
+# Aditivo conceitual V4 — RelatoAluno
+
+Proposta mínima, não DDL ou stack aprovados. Manter relato separado de respostas3FM/Day e do ledger de pontos.
+
+| Campo conceitual | Finalidade |
+|---|---|
+| Identificador | Identificar o registro sem autorizar consulta por conhecimento do ID |
+| AlunoId | Referência ao cadastro, obtida da sessão no servidor, não do payload manipulável |
+| Texto | Texto simples até 1.000 grafemas, preservando conteúdo/quebras |
+| EnviadoEm | Instante confiável do servidor; fuso de apresentação definido em contrato |
+
+Somente permissão administrativa específica permite ler autor/texto. Aluno envia, mas não tem GET de lista/detalhe nem próprios; não aceitar alunoId para decidir autoria. Não disparar evento de pontos. Retenção, exclusão, acesso operacional, índices e política técnica antirreplay/abuso devem ser definidos antes da produção. Não assumir retenção ilimitada. Não registrar corpo em logs comuns ou telemetria de falha.
+
+Prévia: reportDemo.records guarda id,studentId,studentName,text,sentAt apenas na memória. Identidade vem de demoStudent (Major); não é sessão real. pending captura autor/texto no início para não trocar autoria ao navegar durante envio. Relógio local ISO apenas demonstrativo; exibição explícita America/Sao_Paulo. Não há storage/rede; reload elimina registros/rascunho. Restrição de tela não torna esses dados privados.
+
 # Modelo de dados — recorte proposto V3
 
 Proposta conceitual para discussão, não DDL, banco ou arquitetura aprovados. Protótipo usa memória de uma única visita; não persiste nem autentica.

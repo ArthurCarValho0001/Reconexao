@@ -1,3 +1,16 @@
+# Aditivo V4 — relato opcional na Home
+
+Fonte: instrução integral V4 do responsável,23/10/2026. Complemento aos recortes anteriores, sem importar regras obsoletas do ZIP.
+
+- REL-RN01/02: formulário opcional na Home do aluno após gates gerais, depois do saldo/barra e antes dos conteúdos. Ausência de relato não bloqueia plataforma; página pública sem formulário.
+- REL-RN03: textarea multilinha, contador coerente e limite de 1.000 caracteres visíveis. Rejeitar vazio/branco e excesso sem truncar colagem ou perder texto.
+- REL-RN04/05: autoria da identidade da sessão na aplicação real; na prévia fixture Major. Consulta exclusivaAdmin com autor, data/hora e texto integral.
+- REL-RN06/07: aluno não consulta enviados (nem próprios); Admin somente lê. Sem resposta, chat, edição, análise IA, e-mail/WhatsApp ou exportação.
+- REL-RN08: envio não pontua e não altera barra, ranking, II ou prazo Day.
+- Estados: digitando, enviando com proteção a clique repetido, sucesso confirmado limpando campo, erro preservando texto/nova tentativa, listaAdmin vazia.
+- Texto simples escapado; preservar quebras e Unicode. Disclaimers de dados fictícios/envio simulado, não acompanhado em tempo real.
+- Prévia: armazenamento só em memória desta visita, sem rede/storage/logs. Não comprova autorização/persistência reais. Fonte 3FM ausente e demais pendências preservadas.
+
 # Requisitos — recorte vigente V3
 
 Fonte: instrução V3.0 do responsável, rodada de 21/10/2026, reproduzindo os textos do cliente. Este arquivo é um recorte aditivo para o protótipo; não é cópia integral do ZIP nem especificação de produção fechada. Prevalecem V3 e decisões V2 nos conflitos. Não restaurar 90% de vídeo, Day5, expiração aos seis meses ou pagamento II do ZIP.

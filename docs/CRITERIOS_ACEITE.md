@@ -1,3 +1,27 @@
+# Aceite V4 — relato do aluno
+
+55 testes locais passaram na revisão enviada ao PR V4; não equivalem a aprovação do cliente ou autorização real de servidor. REL-CA14 permanece pendente de navegador. Resultados detalhados em TESTES_PROTOTIPO.
+
+| ID | Esperado e observado | Resultado |
+|---|---|---|
+| REL-CA01 | Home do aluno liberada com campo/opcional/contador/privacidade; saldo antes do bloco | PASSOU em VM |
+| REL-CA02 | Vazio/brancos não enviam; mensagem sem falsa confirmação | PASSOU |
+| REL-CA03 | Exatos 1.000 grafemas aceitos | PASSOU |
+| REL-CA04 | Colagem 1001 preservada, com limite e bloqueio | PASSOU |
+| REL-CA05 | Acentos combinados/emojis/quebras contados e preservados | PASSOU |
+| REL-CA06 | Sucesso limpa campo, confirma e associaMajor | PASSOU |
+| REL-CA07 | Falha simulada conserva texto, retentar funciona | PASSOU |
+| REL-CA08 | Sending e callback repetido não duplicam | PASSOU |
+| REL-CA09 | Aluno não recebe histórico/lista/texto enviado na tela | PASSOU na simulação |
+| REL-CA10 | Admin lê autor/fuso/instante/texto integral; vazio inicial | PASSOU na simulação |
+| REL-CA11 | Saldo/barra/II/ranking/Day inalterados | PASSOU |
+| REL-CA12 | Render/rota de consulta só Admin | PASSOU em frontend; autorização de servidor NÃO TESTADA |
+| REL-CA13 | HTML/script tratados como texto escapado | PASSOU em VM; execução em navegador NÃO TESTADA |
+| REL-CA14 | Celular/teclado/rolagem/leitura integral em navegador | NÃO EXECUTADO: Chromium ausente |
+| REL-CA15 | Sem dados reais, sem rede/storage/log do relato, avisos explícitos | Inspeção do código/fixtures; produção não implementada |
+
+Cliente/QA precisam revisar aparência, acessibilidade real e o SHA da entrega antes de nova autorização de merge/publicação. Os critérios V3 históricos seguem abaixo.
+
 # Critérios de aceite — recorte V3
 
 Origem: instrução do responsável em 21/10/2026. Recorte aditivo; resultados abaixo referem-se à simulação local, não homologação de produção. Testes e limitações detalhados em TESTES_PROTOTIPO.

@@ -1,3 +1,23 @@
+# Revisão V4 — relato opcional na Home
+
+Base main 1fbc32698c45bd6ef669ff36a07b5da207269660; branch feature/v4-relato-aluno. PR #4 já mesclado; nenhum PR aberto encontrado. Fonte: instrução V4 integral desta conversa.
+
+| Antes | Nesta revisão |
+|---|---|
+| Home do aluno com saldo/barra e conteúdos | Saldo/barra preservados, seguido de bloco opcional de relato |
+| Sem envio/contador | Contagem por grafemas, limite de 1.000, sem corte silencioso; branco rejeitado |
+| Sem estados de relato | Processing/readonly, sucesso limpa, falha preserva/retenta; cenário técnico provoca falha |
+| Sem consulta Admin | Menu Relatos dos alunos: mesmo registro da sessão, Major/instante/fuso/texto integral, somente leitura |
+| Aluno sem relatos | Continua sem histórico/consulta após enviar |
+| Pontos/Day | Intactos; relato não chama award, não pontua nem renova |
+| Marca/3FM/Day/módulos/QA | Preservados; nenhum index/asset modificado |
+
+Arquivos: app.js,styles.css,tests/prototype.test.cjs,README,AGENTS e sete documentos em docs. Sem dependências novas, backend, integrações ou dados reais. Contagem/fuso são propostas de demonstração documentadas, não stack aprovada.
+
+55 testes passaram (42 regressões +13 REL); um usa callback assíncrono real, demais isolam timers. Revisão visual desktop/mobile/teclado não executada: Chromium ausente. Fonte integral3FM continua pendente; autorização real, retenção/exclusão, logs seguros e contrato Unicode/servidor também. Entrega em PRdraft, sem merge/Pages/preview externo.
+
+Histórico anterior abaixo; não equivale a aprovação V4.
+
 # Revisão V3 — acolhimento 3FM e saldo próprio
 
 Base main: b4654b89d24f1690486c981d49901da3768fdcc9; PRs anteriores mesclados, nenhum PR aberto encontrado. Branch feature/v3-acolhimento-3fm-pontos.
