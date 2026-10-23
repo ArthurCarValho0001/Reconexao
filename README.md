@@ -1,3 +1,35 @@
+# Reconexão — revisão V4: relato opcional do aluno
+
+Base: 1fbc32698c45bd6ef669ff36a07b5da207269660, branch feature/v4-relato-aluno. Preparada para revisão, sem merge, Pages ou preview externo.
+
+## Como demonstrar (somente textos fictícios)
+
+1. Abrir Área do aluno; usar a conclusão 3FM demonstrativa e manter Day em prazo. Os gates existentes continuam valendo.
+2. Após Seus pontos, usar Como você está se sentindo? → Preencher exemplo fictício ou digitar exemplo próprio, nunca dados reais.
+3. Contador inclui espaços/pontuação; até 1.000 caracteres visíveis. Emoji composto/acento combinado conta como um grafema. Colagem acima do limite não é cortada: aviso e envio bloqueado. Não há maxlength UTF-16 divergente do contador.
+4. Enviar relato mostra processamento breve, campo somente leitura e botão desabilitado. Após confirmação fictícia, limpa o campo e permite novo relato, sem histórico para o aluno.
+5. Sair para entrada → Painel administrativo → Relatos dos alunos. Ler o mesmo texto, Major como autor fictício e data/hora em America/Sao_Paulo, com quebras de linha. Admin somente lê, sem responder/editar/exportar.
+6. Para demonstrar falha: Controles técnicos do apresentador → Falhar próximo envio de relato → voltar à Home. Falha conserva o texto; nova tentativa funciona. Nenhuma alteração de pontos/barra/II/ranking/prazo Day.
+7. Recarregar reinicia todo o cenário, inclusive relatos e rascunho. Não há transmissão à equipe, persistência, autenticação ou privacidade real: os estados ficam acessíveis ao JavaScript desta visita. Não inserir relatos reais.
+
+Antes do envio, o texto em edição é mantido ao navegar nesta mesma visita, não fora dela. O autor não é informado pelo campo: vem da fixture Major da Área do aluno. Horário usa relógio local apenas para demonstração; servidor/fuso de produção continuam pendentes.
+
+## Verificação e limites
+
+55 testes passaram (42 regressões + 13 novos); sintaxe aprovada. Inclui temporizador real e cenários determinísticos de erro/duplicidade. Tentativa de navegador falhou por Chromium ausente: visual desktop/mobile/teclado NÃO EXECUTADOS, sem capturas. ARIA/CSS conferidos só no código. Segurança de servidor, isolamento entre alunos, retenção/exclusão e logs seguros continuam requisitos futuros, não controles comprovados.
+
+Executar localmente nesta branch:
+
+~~~sh
+node --check app.js
+node --test tests/prototype.test.cjs
+python -m http.server 8000 --bind 127.0.0.1
+~~~
+
+Abrir http://127.0.0.1:8000. Apresentar cópia local sem alterar Pages. Ver matriz em docs/TESTES_PROTOTIPO.md.
+
+Registro anterior preservado abaixo; esta V4 não muda as regras V3, 3FM/Day ou identidade visual.
+
 # Reconexão — revisão demonstrativa V3 (21/10/2026)
 
 Branch: feature/v3-acolhimento-3fm-pontos. Base: b4654b89d24f1690486c981d49901da3768fdcc9. Esta rodada não autoriza merge/publicação.
