@@ -1,3 +1,11 @@
+## Exemplos de relatos para apresentação
+
+Esta revisão acrescenta três relatos inteiramente fictícios, já disponíveis em **Painel administrativo → Relatos dos alunos**, sem precisar enviar pelo formulário. Cada cartão informa “Exemplo fictício pré-carregado”. Há textos de comprimentos diferentes, com quebras de linha e emoji.
+
+Os exemplos não aparecem na área do aluno e não concedem pontos. Novos envios simulados são acrescentados à mesma lista, identificados como “Envio simulado nesta visita”. Recarregar descarta esses novos envios e restaura somente os três exemplos iniciais; não há persistência ou envio real.
+
+58 testes aprovados. Revisão visual não executada nesta alteração. Branch feature/relatos-ficticios-admin, PR draft, sem autorização de merge/publicação. Os registros anteriores abaixo são históricos.
+
 # Reconexão — revisão V4: relato opcional do aluno
 
 Base: 1fbc32698c45bd6ef669ff36a07b5da207269660, branch feature/v4-relato-aluno. Preparada para revisão, sem merge, Pages ou preview externo.
